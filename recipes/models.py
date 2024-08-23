@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-SERVINGS = [tuple([x, x]) for x in range(1, 10)]
+SERVINGS = [tuple([x, x]) for x in range(1, 11)]
 STATUS = ((0, "Draft"), (1, "Published"))
 
 class Recipe(models.Model):
