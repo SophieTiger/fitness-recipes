@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 
 SERVINGS = [tuple([x, x]) for x in range(1, 11)]
@@ -21,6 +22,7 @@ class Recipe(models.Model):
     fat = models.CharField(max_length=10)
     ingredients = models.TextField()
     instructions = models.TextField()
+    tags = TaggableManager()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
