@@ -31,4 +31,16 @@ class Recipe(models.Model):
         return self.title
 
 
+class Comment(models.Model):
+    """
+    Stores a single comment made to a Recipe post related to :model: `recipes.recipe`
+    and :model:`auth.User`
+    """
+    post = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now=True)
+    approved = models.BooleanField(default=False)
+
+
 
