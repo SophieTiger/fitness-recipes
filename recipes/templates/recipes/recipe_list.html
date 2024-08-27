@@ -5,16 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Views Part 1</title>
+    <title>Recipe List</title>
 </head>
 
 <body>
     <h1>Recipes</h1>
-    {% for recipe in recipe_list %}
+
+    <!-- Display all tags -->
+     <h2>All Tags:</h2>
+     <p>
+        {% for tag in tags %}
+            <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+            {% if not forloop.last %} | {% endif %}
+        {% endfor %}
+    </p>
+
+    <!-- Display recipes -->
+    {% for recipe in recipes %}
     <h2>{{recipe.title}}</h2>
     <p>{{recipe.description}}</p>
-    <p>Type: {{recipe.tag}}</p>
+    <p>Tags: 
+        {% for tag in recipe.tags.all %}
+            <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </p>
     {% endfor %}
+
+    <!-- If no recipes are found -->
+    {% if not recipes %}
+    <p>No recipes found.</p>
+    {% endif %}
 </body>
 
 </html>
