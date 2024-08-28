@@ -8,7 +8,7 @@
             <h1>Recipes</h1>
 
             <!-- Display all tags -->
-            <h2>All Tags:</h2>
+            <h4>All Meal Types:</h4>
             <p>
                 {% for tag in tags %}
                 <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
@@ -29,9 +29,8 @@
                                 <h2 class="recipe-title">{{recipe.title}}</h2>
                             </a>
                             <hr />
-                            <p class="card-text text-muted h6">{{ recipe.created_at }}</p>
                             <p>{{recipe.description}}</p>
-                            <p>Tags:
+                            <p>Meal type:
                                 {% for tag in recipe.tags.all %}
                                 <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
                                 {% if not forloop.last %}, {% endif %}
@@ -56,12 +55,12 @@
                 <ul class="pagination justify-content-center">
                     {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREVIOUS</a>
+                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
                     </li>
                     {% endif %}
                     {% if page_obj.has_next %}
                     <li class="page-item">
-                        <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+                        <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
                     </li>
                     {% endif %}
                 </ul>
