@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Recipe
 from taggit.models import Tag
@@ -33,3 +33,27 @@ class RecipeList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
         return context
+
+
+def recipe_detail(request, slug):
+    """
+    Display an individual :model:`recipes.Recipe`.
+
+    **Context**
+
+    ``recipe``
+        An instance of :model:`recipes.Recipe`.
+
+    **Template:**
+
+    :template:`recipes/recipe_detail.html`
+    """
+
+    queryset = Recipe.objects.filter(status=1)
+    recipe = get_object_or_404(queryset, slug=slug)
+
+    return render(
+        request,
+        "recipes/recipe_detail.html",
+        {"recipe": recipe},
+    )

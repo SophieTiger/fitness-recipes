@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<section id="recipe_details">
+    <div class="container-xl px-5">
+        <div class="row">
+            <!-- Recipe image -->
+            <div class="col-md-6 text-center">
+                {% if 'placeholder' in recipe.recipe_image.url %}
+                <img class="img-thumbnail recipe-image" src="{% static 'images/default_recipe.jpg' %}" alt="Kitchen tools">
+                {% else %}
+                <img class="img-thumbnail recipe-image" src=" {{ recipe.recipe_image.url }}"
+                    alt="{{ recipe.author }}'s {{ recipe.title }}">
+                {% endif %}
+            </div>
+            <div>
+                <!-- Recipe facts -->
+                <div class="col-md-5">
+                    <h1>{{ recipe.title }}</h1>
+                    <p>Created by {{ recipe.author }} on {{ recipe.created_at }}</p>
+                    <p><i class="fas fa-heart" title="Likes"></i> <span id="total-likes">{{ recipe.number_of_likes }}</span></p>
+                    <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
+                    <p>Calories per portion: {{ recipe.calories }}</p>
+                    <p>Protein: {{ recipe.protein }}</p>
+                    <p>Carbs: {{ recipe.carbs }}</p>
+                    <p>Fat: {{ recipe.fat }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
