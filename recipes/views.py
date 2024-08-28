@@ -12,6 +12,7 @@ class RecipeList(generic.ListView):
     queryset = Recipe.objects.all()
     template_name = "recipe_list.html"
     context_object_name = 'recipes'
+    paginate_by = 6
 
     def get_queryset(self):
         """
