@@ -8,7 +8,7 @@
             <h1>Recipes</h1>
 
             <!-- Display all tags -->
-            <h4>All Meal Types:</h4>
+            <a href="{% url 'recipes' %}"><h5>All Meal Types</h5></a>
             <p>
                 {% for tag in tags %}
                 <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
