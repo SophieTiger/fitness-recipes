@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.contrib import messages
 from .models import Recipe
 from .forms import CommentForm
 from taggit.models import Tag
@@ -61,6 +62,10 @@ def recipe_detail(request, slug):
             comment.author = request.user
             comment.post = recipe
             comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Thank you for the comment, it is submitted and pending approval'
+            )
     
     comment_form = CommentForm()
 
