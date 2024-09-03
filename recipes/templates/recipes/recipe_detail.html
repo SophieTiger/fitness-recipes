@@ -55,8 +55,7 @@
             <div class="col-md-8 card mb-4  mt-3 ">
                 <h3>Comments:</h3>
                 <div class="card-body">
-                    <!-- We want a for loop inside the empty control tags
-                  to iterate through each comment in comments -->
+                    <!-- For loop to iterate through each comment in comments -->
                     {% for comment in comments %}
                     <div class="p-2 comments
                   {% if not comment.approved and comment.author == user %}
@@ -75,8 +74,10 @@
                             This comment is awaiting approval
                         </p>
                         {% endif %}
+                        {% if user.is_authenticated and comment.author == user %}
+                        <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                        {% endif %}
                     </div>
-                    <!-- For loop ends here -->
                     {% endfor %}
                 </div>
             </div>
@@ -100,4 +101,8 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
 {% endblock %}
