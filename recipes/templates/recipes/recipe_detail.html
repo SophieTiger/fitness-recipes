@@ -7,8 +7,13 @@
         <div class="row mt-3">
             <!-- Recipe image -->
             <div class="col-md-6 text-center">
-                <img class="img-thumbnail recipe-image" src="{% static 'images/default_recipe.jpg' %}"
+                {% if "placeholder" in recipe.featured_image.url %}
+                <img class="img-thumbnail recipe-image scale" src="{% static 'images/default_recipe.jpg' %}"
                     alt="Placeholder Kitchen tools">
+                {% else %}
+                <img src="{{ recipe.featured_image.url }}" class="img-thumbnail recipe-image scale"
+                    alt="{{ recipe.title }}">
+                {% endif %}
             </div>
             <!-- Recipe facts -->
             <div class="col-md-6">
