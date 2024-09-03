@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from cloudinary.models import CloudinaryField
 
 
 SERVINGS = [tuple([x, x]) for x in range(1, 11)]
@@ -15,6 +16,7 @@ class Recipe(models.Model):
     description = models.TextField(max_length=300)
     author = models.ForeignKey(User, on_delete=models.PROTECT,
         limit_choices_to={'is_staff': True}, related_name="recipe_posts")
+    featured_image = CloudinaryField('image', default='placeholder')
     servings = models.IntegerField(choices=SERVINGS)
     calories = models.CharField(max_length=10)
     protein = models.CharField(max_length=10)

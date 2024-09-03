@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -8,7 +9,9 @@
             <h1>Recipes</h1>
 
             <!-- Display all tags -->
-            <a href="{% url 'recipes' %}"><h5>All Meal Types</h5></a>
+            <a href="{% url 'recipes' %}">
+                <h5>All Meal Types</h5>
+            </a>
             <p>
                 {% for tag in tags %}
                 <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
@@ -23,6 +26,12 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
+                                {% if "placeholder" in recipe.featured_image.url %}
+                                <img class="card-img-top" src="{% static 'images/default_recipe.jpg' %}"
+                                    alt="placeholder image">
+                                {% else %}
+                                <img class="card-img-top" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
+                                {% endif %}
                                 <div class="image-flash"></div>
                             </div>
                             <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
@@ -40,7 +49,8 @@
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 and not forloop.last %}
-                </div><div class="row">
+            </div>
+            <div class="row">
                 {% endif %}
                 {% endfor %}
             </div>
