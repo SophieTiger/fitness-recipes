@@ -148,4 +148,12 @@ def like_recipe(request, slug):
     likes_count = Like.objects.filter(recipe=recipe).count()
     return JsonResponse({'liked': liked, 'likes_count': likes_count})
 
-        
+
+@login_required
+def favorites(request):
+    """
+    View to display favorite recipes
+    """
+    favorite_recipes = Recipe.objects.filter(like__user=request.user, status=1)
+    
+    return render(request, 'recipes/favorites.html', {'favorite_recipes': favorite_recipes})    
