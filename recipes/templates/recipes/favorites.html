@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+
+<h1>Your Favorite Recipes</h1>
+<ul>
+    {% for recipe in favorite_recipes %}
+        <li><a href="{% url 'recipe_detail' recipe.slug %}">{{ recipe.title }}</a></li>
+    {% empty %}
+        <li>You haven't liked any recipes yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
