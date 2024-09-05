@@ -16,8 +16,8 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in recipe.featured_image.url %}
-                                <img class="card-img-top card-img-fixed-size" src="{% static 'images/default_recipe.jpg' %}"
-                                    alt="placeholder image">
+                                <img class="card-img-top card-img-fixed-size"
+                                    src="{% static 'images/default_recipe.jpg' %}" alt="placeholder image">
                                 {% else %}
                                 <img class="card-img-top card-img-fixed-size" src=" {{ recipe.featured_image.url }}"
                                     alt="{{ recipe.title }}">
@@ -28,50 +28,51 @@
                                         {{ recipe.number_of_likes }}
                                     </div>
                                 </div>
-                                <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
-                                    <h2 class="recipe-title">{{recipe.title}}</h2>
-                                </a>
-                                <hr />
-                                <p>{{recipe.description}}</p>
-                                <p>Meal type:
-                                    {% for tag in recipe.tags.all %}
-                                    <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
-                                    {% if not forloop.last %}, {% endif %}
-                                    {% endfor %}
-                                </p>
                             </div>
+                            <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                                <h2 class="recipe-title">{{recipe.title}}</h2>
+                            </a>
+                            <hr />
+                            <p>{{recipe.description}}</p>
+                            <p>Meal type:
+                                {% for tag in recipe.tags.all %}
+                                <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
                         </div>
                     </div>
-                    {% if forloop.counter|divisibleby:3 and not forloop.last %}
                 </div>
-                <div class="row">
-                    {% endif %}
-                    {% endfor %}
-                </div>
-
-                <!-- If no recipes are found -->
-                {% if not favorite_recipes %}
-                <p>You haven't liked any recipes yet.</p>
-                {% endif %}
-
-                {% if is_paginated %}
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        {% if page_obj.has_previous %}
-                        <li class="page-item">
-                            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
-                        </li>
-                        {% endif %}
-                        {% if page_obj.has_next %}
-                        <li class="page-item">
-                            <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-                {% endif %}
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
             </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- If no recipes are found -->
+            {% if not favorite_recipes %}
+            <p>You haven't liked any recipes yet.</p>
+            {% endif %}
+
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
+                    </li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
         </div>
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}
