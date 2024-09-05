@@ -9,15 +9,17 @@
             <h1>Recipes</h1>
 
             <!-- Display all tags -->
-            <a href="{% url 'recipes' %}">
-                <h5>All Meal Types</h5>
-            </a>
-            <p>
-                {% for tag in tags %}
-                <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
-                {% if not forloop.last %} | {% endif %}
-                {% endfor %}
-            </p>
+            <div class="tags-container">
+                <h5 class="tags-header">
+                    <a href="{% url 'recipes' %}">All Meal Types</a>
+                </h5>
+                <div class="tags-list">
+                    {% for tag in tags %}
+                    <a href="{% url 'recipes_list_by_tag' tag.slug %}" class="tag-item">{{ tag.name }}</a>
+                    {% endfor %}
+                </div>
+
+            </div>
 
             <!-- Display recipes -->
             <div class="row">
@@ -47,8 +49,8 @@
                             <p>{{recipe.description}}</p>
                             <p>Meal type:
                                 {% for tag in recipe.tags.all %}
-                                <a href="{% url 'recipes_list_by_tag' tag.slug %}">{{ tag.name }}</a>
-                                {% if not forloop.last %}, {% endif %}
+                                <a href="{% url 'recipes_list_by_tag' tag.slug %}" class="tag-item">{{ tag.name }}</a>
+                                {% if not forloop.last %} {% endif %}
                                 {% endfor %}
                             </p>
                         </div>

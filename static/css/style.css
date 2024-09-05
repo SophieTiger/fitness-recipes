@@ -40,6 +40,45 @@ body {
     background-color: #F9FAFC;
 }
 
+.tags-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tags-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.tags-header a {
+    color: #333;
+    text-decoration: none;
+}
+
+.tags-header a:hover {
+    text-decoration: underline;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-item {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.tag-item:hover {
+    background-color: #e0e0e0;
+}
+
 .card {
     border: none;
     background-color: transparent;
