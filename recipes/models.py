@@ -29,6 +29,10 @@ class Recipe(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
+    @property
+    def number_of_likes(self):
+        return self.like_set.count()
+    
     class Meta:
         ordering = ["-created_at"]
 
