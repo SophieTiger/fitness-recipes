@@ -21,18 +21,17 @@
                 <p>Created by {{ recipe.author }} on {{ recipe.created_at }}</p>
                 <hr>
                 <p>
-                    <span id="likes-count">{{ likes_count }}</span>
                     {% if user.is_authenticated %}
                     <form action="{% url 'like_recipe' recipe.slug %}" method="post" style="display: inline;">
                         {% csrf_token %}
-                        <button type="submit" class="like-button"
+                        <button type="submit" class="like-button btn btn-link"
                             style="background: none; border: none; cursor: pointer;">
                             {% if user_liked %}
                             <i class="fas fa-heart" style="color: red;"></i>
                             {% else %}
                             <i class="far fa-heart"></i>
                             {% endif %}
-                        </button>
+                        </button><span id="likes-count">{{ likes_count }}</span>
                     </form>
                     {% else %}
                     <i class="far fa-heart"></i>
@@ -146,5 +145,7 @@
 {% endblock %}
 
 {% block extras %}
+{{ block.super }}
 <script src="{% static 'js/comments.js' %}"></script>
+<script src="{% static 'js/likes.js' %}"></script>
 {% endblock %}

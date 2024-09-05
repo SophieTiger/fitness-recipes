@@ -27,12 +27,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Custom JavaScript -->
-    <script src="{% static 'js/likes.js' %}"></script>
-
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
@@ -124,12 +118,16 @@
                     class="fa-brands fa-youtube ms-3 text-white"></i><span class="visually-hidden">Youtube</span></a>
         </p>
     </footer>
-
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"
+        defer>
     </script>
-
-    <script src="https://kit.fontawesome.com/f1ec7813a1.js" crossorigin="anonymous"></script>
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/f1ec7813a1.js" crossorigin="anonymous" defer></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     {% block extras %}
     {% endblock %}
 </body>

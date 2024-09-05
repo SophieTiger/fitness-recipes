@@ -142,11 +142,21 @@ def like_recipe(request, slug):
         # If the Like already exists, remove it (unlike)
         like.delete()
         liked = False
+        message = f"{recipe.title} removed from Favorites!"
     else:
         liked = True
+        message = f"{recipe.title} added to Favorites!"
     
     likes_count = Like.objects.filter(recipe=recipe).count()
-    return JsonResponse({'liked': liked, 'likes_count': likes_count})
+
+    # Add the message to Django's message framework
+    messages.success(request, message)
+
+    return JsonResponse({
+        'liked': liked,
+        'likes_count': likes_count,
+        'message': message
+        })
 
 
 @login_required
