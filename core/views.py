@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from django.contrib import messages
+from django.views.generic import TemplateView
 from .models import About
 from .forms import ContactForm
 
 
 # Create your views here.
+class Index(TemplateView):
+    template_name = "home/index.html"
+    
+
 def about_fitness_recipes(request):
     """
     Renders the About page and Contact form

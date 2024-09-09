@@ -39,7 +39,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light gradient-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'recipes' %}"><span class="brand">Fitness Recipes <i
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Fitness Recipes <i
                         class="fa-solid fa-dumbbell"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="#">Home</a>
+                            href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == recipes_url %}active{% endif %}" aria-current="page"

@@ -30,7 +30,7 @@ body {
 
 /* Home page */
 .home-main-div {
-    background-color: #188181;
+    background-image: url(../images/home_page.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -186,4 +186,14 @@ body {
 
 .approval {
     color: rgb(222, 146, 168);
+}
+
+/* About page */
+#profile-img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 200px;
+    height: 300px;
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
