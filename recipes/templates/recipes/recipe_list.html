@@ -5,14 +5,13 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
-            <h1>Recipes</h1>
+        <div class="col-12">            
 
             <!-- Display all tags -->
             <div class="tags-container">
-                <h5 class="tags-header">
-                    <a href="{% url 'recipes' %}">All Meal Types</a>
-                </h5>
+                <h3 class="tags-header">
+                    <a href="{% url 'recipes' %}">All Recipes</a>
+                </h3>
                 <div class="tags-list">
                     {% for tag in tags %}
                     <a href="{% url 'recipes_list_by_tag' tag.slug %}" class="tag-item">{{ tag.name }}</a>
@@ -36,7 +35,7 @@
                                     alt="{{ recipe.title }}">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <div class="border border-white border-2">
+                                    <div class="border border-white border-2">                                        
                                         <i class="fas fa-heart card-likes" title="Likes"></i>
                                         {{ recipe.number_of_likes }}
                                     </div>
