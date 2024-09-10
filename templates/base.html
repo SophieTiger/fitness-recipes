@@ -61,13 +61,13 @@
                             href="{% url 'about' %}">About</a>
                     </li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item"></li>
+                        <a class="nav-link" aria-current="page" href="{% url 'favorites' %}">Favorites</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
                             href="{% url 'account_logout' %}">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'favorites' %}">Favorites</a>
-                    </li>
+                    </li>                    
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
@@ -78,13 +78,19 @@
                             href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
-                </ul>
-                <span class="navbar-text text-muted">
-                    Search field here?
-                </span>
+                </ul>                
             </div>
         </div>
     </nav>
+    <!-- Login Status Message -->
+    <div class="login-status text-end">
+        {% if user.is_authenticated %}
+        <p class="m-0">You are logged in as {{ user }}</p>
+        {% else %}
+        <p class="m-0">You are not logged in</p>
+        {% endif %}
+    </div>
+
     <!-- displaying Django messages -->
     <div class="container">
         <div class="row">
@@ -100,14 +106,7 @@
         </div>
     </div>
 
-    <main class="flex-grow-1">
-        <div class="login-status">
-            {% if user.is_authenticated %}
-            <p class="m-0">You are logged in as {{ user }}</p>
-            {% else %}
-            <p class="m-0">You are not logged in</p>
-            {% endif %}
-        </div>
+    <main class="flex-grow-1">   
 
         {% block content %}
         <!-- Content Goes here -->
