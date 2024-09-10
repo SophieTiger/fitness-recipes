@@ -9,12 +9,21 @@
     <div class="container">
         <div class="row min-vh-100 align-items-center">
             <div class="col-12 col-md-8 col-lg-6 mx-auto">
-                <h1>Optimize your performance with nutrition!</h1>
+                <div class="content-box text-center">
+                    <h1 class="mb-4">Optimize your performance with nutrition!</h1>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'favorites' %}" class="btn btn-primary btn-lg">Favorites</a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg">Sign In</a>
+                        {% endif %}
+                        <a href="{% url 'recipes' %}" class="btn btn-secondary btn-lg">Browse Recipes</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- index.html content ends here -->
 {% endblock %}
