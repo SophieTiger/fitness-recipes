@@ -1,1 +1,1 @@
-web: gunicorn fitnessrecipes.wsgi
+web: python3 manage.py collectstatic --no-input && gunicorn fitnessrecipes.wsgi
