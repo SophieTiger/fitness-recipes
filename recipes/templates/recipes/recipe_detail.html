@@ -22,14 +22,13 @@
                 <hr>
                 <p>
                     {% if user.is_authenticated %}
-                    <form action="{% url 'like_recipe' recipe.slug %}" method="post" style="display: inline;">
+                    <form action="{% url 'like_recipe' recipe.slug %}" method="post" class="like-form">
                         {% csrf_token %}
-                        <button type="submit" class="like-button btn btn-link"
-                            style="background: none; border: none; cursor: pointer;">
+                        <button type="submit" class="like-button">
                             {% if user_liked %}
-                            <i class="fas fa-heart" style="color: red;"></i>
+                            <i class="fas fa-heart liked-heart"></i>
                             {% else %}
-                            <i class="far fa-heart"></i>
+                            <i class="far fa-heart unliked-heart"></i>
                             {% endif %}
                         </button><span id="likes-count">{{ likes_count }}</span>
                     </form>

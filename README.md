@@ -9,11 +9,14 @@ and a blank screen with only a raw json response is shown: {"liked": true, "like
 - Delete and Edit functionality on comments suddenly stopped working when site was almost finished.
   - Analyzed error messages in the devtools console, pointing me towards a ReferenceError that Bootstrap is not defined at comments.js.
   After googling and serching for answers I wrapped my comments.js code in a DOMContentLoaded event listener to make sure that code runs only after the HTML document has been completely loaded and parsed, and all scripts (including Bootstrap) are ready to use.
+- Number of likes not changing on the recipe detail page when clicking the heart-like button.
+  - Searching and googling for answers gave me the idea to implement Optimistic updates that should provide a smooth user experience, and error handling that ensures that the UI stays in sync with the server state.
 
 ## Credits
 
 - https://django-taggit.readthedocs.io/en/latest/getting_started.html, taggit
 - https://dev.to/radualexandrub/how-to-add-like-unlike-button-to-your-django-blog-5gkg, likes
+- I think therefore I blog Walkthrough project. A big help when starting to build this project, and a huge inspiration for the structure.
 
 - Recipes:
   - https://www.myprotein.com/

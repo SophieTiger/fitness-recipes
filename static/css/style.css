@@ -308,8 +308,46 @@ main {
 .approval {
     color: rgb(222, 146, 168);
 }
+/* ////////Recipe details page/////// */
+/* Like button styles */
+.like-form {
+    display: inline;
+}
 
-/* About page */
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.like-button:focus {
+    outline: none;
+}
+
+/* Heart icon styles */
+.like-button i {
+    font-size: 1.5rem; /* Adjust size as needed */
+    transition: color 0.3s ease;
+}
+
+.liked-heart {
+    color: red;
+}
+
+.unliked-heart {
+    color: red;
+    opacity: 0.5;
+}
+
+/* Likes count style */
+#likes-count {
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+
+/* //////About page////// */
 #profile-img {
     border-radius: 50%;
     object-fit: cover;
