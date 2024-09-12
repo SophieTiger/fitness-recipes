@@ -33,7 +33,7 @@
                         </button><span id="likes-count">{{ likes_count }}</span>
                     </form>
                     {% else %}
-                    <i class="far fa-heart"></i>
+                    <i class="far fa-heart"></i><span id="likes-count">{{ likes_count }}</span>  <span>Log in to like this recipe</span>
                     {% endif %}
                 </p>
                 <p><i class="fas fa-utensils"></i> Serves: {{ recipe.servings }}</p>
