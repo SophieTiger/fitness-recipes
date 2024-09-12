@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
+from django.contrib.messages.api import get_messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Recipe, Comment, Like
 from .forms import CommentForm
@@ -135,29 +137,44 @@ def like_recipe(request, slug):
     """
     View to handle liking/unliking a recipe
     """
-    recipe = get_object_or_404(Recipe, slug=slug, status=1)
-    like, created = Like.objects.get_or_create(user=request.user, recipe=recipe)
+    try:
+        recipe = get_object_or_404(Recipe, slug=slug, status=1)
+        like, created = Like.objects.get_or_create(user=request.user, recipe=recipe)
 
-    if not created:
-        # If the Like already exists, remove it (unlike)
-        like.delete()
-        liked = False
-        message = f"{recipe.title} removed from Favorites!"
-    else:
-        liked = True
-        message = f"{recipe.title} added to Favorites!"
+        if not created:
+            # If the Like already exists, remove it (unlike)
+            like.delete()
+            liked = False
+            message = f"{recipe.title} removed from Favorites!"
+        else:
+            liked = True
+            message = f"{recipe.title} added to Favorites!"
     
-    likes_count = Like.objects.filter(recipe=recipe).count()
+        likes_count = Like.objects.filter(recipe=recipe).count()
 
-    # Add the message to Django's message framework
-    messages.success(request, message)
+        # Add the message to Django's message framework
+        messages.success(request, message)
 
-    return JsonResponse({
-        'liked': liked,
-        'likes_count': likes_count,
-        'message': message
-        })
+        # Get all messages and mark them as used
+        storage = messages.get_messages(request)
+        for m in storage:
+            pass
 
+        return JsonResponse({
+            'liked': liked,
+            'likes_count': likes_count,
+            'message': message
+            })
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+@require_POST
+def clear_messages(request):
+    storage = messages.get_messages(request)
+    for message in storage:
+        pass  # Iterating through messages marks them as used
+    return JsonResponse({'status': 'success'})
+    
 
 @login_required
 def favorites(request):

@@ -22,7 +22,7 @@
                 <hr>
                 <p>
                     {% if user.is_authenticated %}
-                    <form action="{% url 'like_recipe' recipe.slug %}" method="post" class="like-form">
+                    <form action="{% url 'like_recipe' recipe.slug %}" method="POST" class="like-form">
                         {% csrf_token %}
                         <button type="submit" class="like-button">
                             {% if user_liked %}

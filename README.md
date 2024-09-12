@@ -11,12 +11,16 @@ and a blank screen with only a raw json response is shown: {"liked": true, "like
   After googling and serching for answers I wrapped my comments.js code in a DOMContentLoaded event listener to make sure that code runs only after the HTML document has been completely loaded and parsed, and all scripts (including Bootstrap) are ready to use.
 - Number of likes not changing on the recipe detail page when clicking the heart-like button.
   - Searching and googling for answers gave me the idea to implement Optimistic updates that should provide a smooth user experience, and error handling that ensures that the UI stays in sync with the server state.
+- Message that is displayed when liking/unliking recipes is still shown on other pages after clicked down by the user on the recipe details page.
+  - Solution: implement a solution that clears the message after it's displayed via AJAX. Modify Javascript and View, add a new view to clear messages and a new url to display the new view. This approach ensures that the messages are displayed immediately via AJAX and then cleared from Django's message storage, preventing them from appearing on subsequent page loads.
 
 ## Credits
 
 - https://django-taggit.readthedocs.io/en/latest/getting_started.html, taggit
 - https://dev.to/radualexandrub/how-to-add-like-unlike-button-to-your-django-blog-5gkg, likes
 - I think therefore I blog Walkthrough project. A big help when starting to build this project, and a huge inspiration for the structure.
+- Tutor support has helped me a lot on the way and special thanks to Oisin, Recebecca and Holly.
+- My mentor Spencer Bariball is always the best support and makes sure that I follow through, truly appriciate his valuable feedback.
 
 - Recipes:
   - https://www.myprotein.com/
