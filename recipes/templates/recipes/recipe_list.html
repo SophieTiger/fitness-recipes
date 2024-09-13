@@ -29,7 +29,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in recipe.featured_image.url %}
                                 <img class="card-img-top card-img-fixed-size"
-                                    src="{% static 'images/default_recipe.jpg' %}" alt="placeholder image">
+                                    src="{% static 'images/default_recipe.webp' %}" alt="placeholder image">
                                 {% else %}
                                 <img class="card-img-top card-img-fixed-size" src=" {{ recipe.featured_image.url }}"
                                     alt="{{ recipe.title }}">
