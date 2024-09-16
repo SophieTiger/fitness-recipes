@@ -4,6 +4,79 @@ Hopefully it also inspires to a healthier and stronger lifestyle!
 
 Live Site ![https://fitness-recipes-15e8ac3730aa.herokuapp.com/]
 
+## Content
+- Project Goals
+  - User Goals
+  - Site Owner Goals
+  - User Stories
+  - Agile Planning
+- Features
+  - Navbar
+  - Footer
+  - Home page
+  - Recipes page
+  - Recipe detail page
+  - Favorites page
+  - About page
+  - Sign In page
+  - Register page
+  - Sign out page
+- Testing
+- Validators
+- Heroku Deployment
+- Technologies
+- Planning project
+  - Wireframes
+  - Database Schema
+- Security
+- Bugs
+- Credits
+
+
+## Project Goals
+### User Goals
+
+### Site Owner Goals
+
+### User Stories
+
+### Agile Planning
+
+## Features
+### Navbar
+
+### Footer
+
+### Home Page
+
+### Recipes page
+
+### Recipe detail page
+
+### Favorites page
+
+### About page
+
+### Sign In page
+
+### Register page
+
+### Sign out page
+
+## Testing
+
+## Validators
+
+## Heroku Deployment
+
+## Technologies
+
+## Planning project
+### Wireframes
+### Database Schema
+
+## Security
+
 ## Bugs
 - The message to add/remove recipes from Favorites is displaying, but only on the recipe_list page, and the heart is not filled in and added to the count on the recipe_detail display until I go out and back to the recipe_detail display.
   - Solution: moved likes.js script to recipe_detail template, and added defer to script tags in the base template to help with load performance.
@@ -28,5 +101,6 @@ and a blank screen with only a raw json response is shown: {"liked": true, "like
 
 - Recipes:
   - https://www.myprotein.com/
+  - https://www.bbcgoodfood.com/
   
 
