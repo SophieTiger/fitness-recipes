@@ -1,4 +1,12 @@
 $(document).ready(function() {
+    // Add CSRF token to all AJAX requests
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", $('input[name="csrfmiddlewaretoken"]').val());
+            }
+        }
+    });
     // Define variables
     const likeButtons = $('.like-button');
     const messageContainer = $('.col-md-8.offset-md-2');
@@ -39,7 +47,7 @@ $(document).ready(function() {
                 }
                 
                 // Display the message
-                showMessage(data.message);
+                showMessage(data.message, 'success');
             },
             error: function(xhr, status, error) {
                 // Revert optimistic update on error
@@ -65,21 +73,29 @@ $(document).ready(function() {
                });
     }
 
-    function showMessage(message) {
-        // Create the message element
+    function showMessage(message, type) {
+        var alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
         var messageHtml = `
-            <div class="alert alert-success alert-dismissible fade show" id="msg" role="alert">
+            <div class="alert ${alertClass} alert-dismissible fade show" id="msg" role="alert">
                 ${message}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         `;
-
-        // Insert the message into the messages container
         messageContainer.html(messageHtml);
-
-        // Fade out the message after 3 seconds
-        setTimeout(function() {
-            $('#msg').alert('close');
-        }, 3000);
+    
+        // Clear the message from Django's message storage
+        $.ajax({
+            url: '/recipes/clear-messages/',
+            type: 'POST',
+            data: {
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                console.log('Messages cleared');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error clearing messages:', error);
+            }
+        });
     }
 });

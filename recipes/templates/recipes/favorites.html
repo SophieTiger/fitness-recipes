@@ -37,7 +37,7 @@
                             <p>Meal type:
                                 {% for tag in recipe.tags.all %}
                                 <a href="{% url 'recipes_list_by_tag' tag.slug %}" class="tag-item">{{ tag.name }}</a>
-                                {% if not forloop.last %}, {% endif %}
+                                {% if not forloop.last %} {% endif %}
                                 {% endfor %}
                             </p>
                         </div>
