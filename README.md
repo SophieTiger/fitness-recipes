@@ -1,4 +1,8 @@
+# Fitness Recipes
+Fitness Recipes is a website for people looking for recipes that can help them increase physical and mental performance. With calorie calculated recipes, and the display of macro nutrients these recipes makes life easier when it comes to calculating the total intake for the day.
+Hopefully it also inspires to a healthier and stronger lifestyle!
 
+Live Site ![https://fitness-recipes-15e8ac3730aa.herokuapp.com/]
 
 ## Bugs
 - The message to add/remove recipes from Favorites is displaying, but only on the recipe_list page, and the heart is not filled in and added to the count on the recipe_detail display until I go out and back to the recipe_detail display.
