@@ -33,3 +33,6 @@ def about_fitness_recipes(request):
             "contact_form": contact_form,
         },
     )
+
+def test_500(request):
+    raise Exception("Test 500 error")
