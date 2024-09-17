@@ -2,15 +2,13 @@
 Fitness Recipes is a website for people looking for recipes that can help them increase physical and mental performance. With calorie calculated recipes, and the display of macro nutrients these recipes makes life easier when it comes to calculating the total intake for the day.
 Hopefully it also inspires to a healthier and stronger lifestyle!
 
-Live Site ![https://fitness-recipes-15e8ac3730aa.herokuapp.com/]
+[Live Site](https://fitness-recipes-15e8ac3730aa.herokuapp.com/)
 
 ## Content
 - Project Goals
   - User Goals
   - Site Owner Goals
-  - User Stories
-  - Agile Planning
-- Features
+ - Features
   - Navbar
   - Footer
   - Home page
@@ -28,6 +26,8 @@ Live Site ![https://fitness-recipes-15e8ac3730aa.herokuapp.com/]
 - Planning project
   - Wireframes
   - Database Schema
+  - User Stories
+  - Agile Planning
 - Security
 - Bugs
 - Credits
@@ -37,24 +37,6 @@ Live Site ![https://fitness-recipes-15e8ac3730aa.herokuapp.com/]
 ### User Goals
 
 ### Site Owner Goals
-
-### User Stories
-
-### Agile Planning
-This project was developed using Agile methodology which allowed me to iteratively and incrementally build my app, with flexibility to make changes to my design throughout the entire development process.
-
-GitHub Issues and Projects were used to manage the development process. The board view of the Project feature was used to display and manage my progress in the form of a 'kanban board'. The user stories were added to the 'Todo' column to be prioritised for development, moved to the 'In Progress' column to indicate development of the feature had begun and finally moved to the 'Done' column when the feature had been implemented and the acceptance criteria had been met.
-User stories were prioritised using the MoSCoW prioritisation technique. Each user story was given one of the following labels:
-- Must have - to indicate the user story is guaranteed to be delivered.
-- Should have - to indicate the user story would add significant value but is not vital.
-- Could have - to indicate the user story would have a small impact if left out.
-- Won't have - to indicate the user story is not a priority in the current iteration.
-
-GitHub milestones were also used to group related user stories together.
-
-Image of the Kanban board
-
-The Project Kanban Board - link
 
 ## Features
 ### Navbar
@@ -164,8 +146,44 @@ The API platform has been used to store images uploaded by admin of the webpage
 ## Technologies
 
 ## Planning project
+### User Stories
+
+### Agile Planning
+This project was developed using Agile methodology which allowed me to iteratively and incrementally build my app, with flexibility to make changes to my design throughout the entire development process.
+
+GitHub Issues and Projects were used to manage the development process. The board view of the Project feature was used to display and manage my progress in the form of a 'kanban board'. The user stories were added to the 'Todo' column to be prioritised for development, moved to the 'In Progress' column to indicate development of the feature had begun and finally moved to the 'Done' column when the feature had been implemented and the acceptance criteria had been met.
+User stories were prioritised using the MoSCoW prioritisation technique. Each user story was given one of the following labels:
+- Must have - to indicate the user story is guaranteed to be delivered.
+- Should have - to indicate the user story would add significant value but is not vital.
+- Could have - to indicate the user story would have a small impact if left out.
+- Won't have - to indicate the user story is not a priority in the current iteration.
+
+GitHub milestones were also used to group related user stories together.
+
+Image of the Kanban board
+
+The Project Kanban Board - link
+
+
 ### Wireframes
+I created my wireframes using the Balsamiq app.
+
+#### Home page
+![Home wireframe](../fitness-recipes/readme_images/homepage.png)
+
+#### Recipes page
+![Recipes wireframe](../fitness-recipes/readme_images/recipe_list.png)
+
+#### Recipe detail page
+![Recipe detail wireframe](../fitness-recipes/readme_images/recipe_detail.png)
+
+#### About page
+![About wireframe](../fitness-recipes/readme_images/about_page.png)
+
 ### Database Schema
+I created the database schema using the Lucidchart website.
+
+![Database Schema](../fitness-recipes/readme_images/database_schema.png)
 
 ## Security
 ### Cross-Site Request Forgery (CSRF) Protection
@@ -187,11 +205,13 @@ The restricted features for authenticated users only are:
 - Only the admin can add, edit and delete recipes.
 - Admin must approve comments added by logged in users before they are displayed to other users of the site.
 
-## Custom Error pages TO-DO!!
-- Error pages have a redirect to the home page button for better user experience
+## Custom Error pages
+- Error pages are customized for a better user experience
 
   - 404 Page Not Found Error
   - 500 Internal Server Error
+
+Instructions on how to implement this was taken from here: https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages
 
 ## Bugs
 - The message to add/remove recipes from Favorites is displaying, but only on the recipe_list page, and the heart is not filled in and added to the count on the recipe_detail display until I go out and back to the recipe_detail display.
