@@ -41,6 +41,20 @@ Live Site ![https://fitness-recipes-15e8ac3730aa.herokuapp.com/]
 ### User Stories
 
 ### Agile Planning
+This project was developed using Agile methodology which allowed me to iteratively and incrementally build my app, with flexibility to make changes to my design throughout the entire development process.
+
+GitHub Issues and Projects were used to manage the development process. The board view of the Project feature was used to display and manage my progress in the form of a 'kanban board'. The user stories were added to the 'Todo' column to be prioritised for development, moved to the 'In Progress' column to indicate development of the feature had begun and finally moved to the 'Done' column when the feature had been implemented and the acceptance criteria had been met.
+User stories were prioritised using the MoSCoW prioritisation technique. Each user story was given one of the following labels:
+- Must have - to indicate the user story is guaranteed to be delivered.
+- Should have - to indicate the user story would add significant value but is not vital.
+- Could have - to indicate the user story would have a small impact if left out.
+- Won't have - to indicate the user story is not a priority in the current iteration.
+
+GitHub milestones were also used to group related user stories together.
+
+Image of the Kanban board
+
+The Project Kanban Board - link
 
 ## Features
 ### Navbar
@@ -63,11 +77,89 @@ Live Site ![https://fitness-recipes-15e8ac3730aa.herokuapp.com/]
 
 ### Sign out page
 
+### Future features
+- Star ratings:
+  - These will be implemented in the comment section below the recipe details where logged in users can rate a recipe if they wish to do so.
+
+- Search, filter bars:
+  - Search function that allows visitors and logged in users to search the webpage by keywords relating to ingredients, recipe title and ratings.
+  - Filter that allows visitors and logged in users to filter recipes by servings, calories, macros and ratings.
+
+
 ## Testing
+See TESTING.md for all the detailed testing
 
 ## Validators
 
-## Heroku Deployment
+## Deployment
+### Version Control
+- The site was created using Gitpod editor and pushed to Github to the remote repository 'fitness-recipes'.
+- Git commands were used throughout the development to push the code to the remote repository. The following git commands were used:
+  - git add . - to add the files to the staging area before being committed.
+  - git commit -m "commit message" - to commit changes to the local repository queue that are ready for the final step.
+  - git push - to push all committed code to the remote repository on Github.
+
+### Prepare the workspace environment & settings.py
+- Create an env.py, requirements.txt & Procfile in the main directory of your GitPod workspace
+- Add the DATABASE_URL value, CLOUDINARY_URL and your chosen SECRET_KEY value to the env.py
+- Import the env.py file in your settings.py file and add the SECRETKEY and DATABASE_URL file paths
+- Comment the default database configuration out
+- Save files, make migrations and migrate
+- Add the Cloudinary URL to the env.py file
+- Add the Cloudinary libraries to the list of installed apps in settings.py
+- Add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path
+- Link the file to the templates directory in Heroku
+- Change the templates directory to TEMPLATES_DIR
+- Add Heroku to the ALLOWED_HOSTS list in settings.py ['app_name.heroku.com', 'localhost']
+- Important! In settings.py ensure DEBUG = False
+
+### Heroku Deployment
+- The app was deployed with Heroku following these steps:
+  - After creating a Heroku account, click "New" to create a new app from the dashboard.
+  - Create a name of the app, that needs to be unique, and select your region. Press "Create app"
+  - Go to settings and add the necessary Config_vars. For this app there is a CLOUDINARY_URL for the storage of images in Cloudinary, DATABASE_URL to the CI Database used in the project and a SECRET_KEY to enable various security features and help protect sensitive data.
+  - Go to Deploy tab and scroll down to Deployment Method.
+  - Select GitHub and search for your GitHub repository.
+  - Scroll down to deploy options.
+  - For this project the Manual Deploy method was chosen.
+  - Choose main branch and click Deploy Branch. This will deploy the current state of the branch specified.
+  - Now the app is being built and when Deploy to Heroku has a green check mark, the build is finished.
+  - Click View button to open the app in a browser window.
+
+### Cloning of the Repository Code locally
+Cloning a repository will download a full copy of the data to your computer. This is useful when larger commits need to be pushed, adding or removing files and fixing merge conflicts.
+- Login to GitHub
+- Click the repository you wish to clone (Top left corner)
+- Click 'Code' which is shown above the list of files in the repository
+- Click the 'Local' tab, copy the HTTPS URL
+- Open Gitpod Workspaces, click 'New Workspace'
+- Paste the copied URL into the space given under 'Repository URL'
+- Click 'Continue' and the local clone will be created.
+
+### Forking the GitHub repository
+Forking a GitHub repository will allow you to make a copy of the repository, changes can then be made that will not affect the original repository. This is useful for proposed changes, ideas, fixes to an original repository.
+- Login to GitHub
+- Click the repository you wish to fork (Top left corner)
+- Click the 'Fork' drop-down in the top right-hand corner
+- Then click 'Create a new fork' you will now have a copy to work on.
+
+### Database
+This webpage is using PostgreSQL from Code Institute 
+https://dbs.ci-dbs.net/
+- Input your email
+- Create a database
+- Receive your link
+
+### Cloudinary
+The API platform has been used to store images uploaded by admin of the webpage
+- Login to Cloudinary
+- In the Dashboard, you can copy your API Environment Variable
+- Be sure to remove the CLOUDINARY_URL= as part of the API value; this is the key in Config vars.
+
+### Deploy your cloned or forked site
+- Follow the steps above in: Prepare the workspace environment & settings.py
+- Then use the instructions under: Heroky Deployment
+
 
 ## Technologies
 
@@ -76,6 +168,30 @@ Live Site ![https://fitness-recipes-15e8ac3730aa.herokuapp.com/]
 ### Database Schema
 
 ## Security
+### Cross-Site Request Forgery (CSRF) Protection
+By implementing CSRF protection in this project helps prevent malicious websites from executing unauthorized actions on behalf of authenticated users.
+Django provides built-in CSRF protection by including a CSRF token with each form submission and verifying it on the server side.
+
+### Django Allauth for Authentication and Authorization
+Django Allauth was implemented in the project and is an authentication and authorization framework that provides features like registration, login, password management, and social authentication.
+It ensures secure user authentication and authorization processes.
+
+### Restricted Features for Non-Authenticated Users
+By requiring users to be logged in to access certain features, the application enhances security and ensures that sensitive operations are performed by authorized individuals only.
+The restricted features for authenticated users only are:
+- Commenting on recipes
+- Liking recipes
+- Saving recipes to Favorites
+
+### Admin site 
+- Only the admin can add, edit and delete recipes.
+- Admin must approve comments added by logged in users before they are displayed to other users of the site.
+
+## Custom Error pages TO-DO!!
+- Error pages have a redirect to the home page button for better user experience
+
+  - 404 Page Not Found Error
+  - 500 Internal Server Error
 
 ## Bugs
 - The message to add/remove recipes from Favorites is displaying, but only on the recipe_list page, and the heart is not filled in and added to the count on the recipe_detail display until I go out and back to the recipe_detail display.
