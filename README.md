@@ -81,7 +81,7 @@ Fully responsive footer, with working links, that opens in a new browser window:
   - [Instagram](https://www.instagram.com/)
   - [YouTube](https://www.youtube.com/)
 
-[Footer Image](../fitness-recipes/readme_images/footer.png)
+![Footer Image](./readme_images/footer.png)
 
 ### Home Page
 
