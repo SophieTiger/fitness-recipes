@@ -65,17 +65,23 @@ The Fitness Recipes name and the dumbbell icon are also linked to the home page.
 The dumbbell icon is rotated by -15 deg and turned into a green color when hovered over for a visual effect.
 
 For non-authenticated users:
-[Navbar Image](../fitness-recipes/readme_images/navbar_non_auth.png)
+![Navbar Image](../fitness-recipes/readme_images/navbar_non_auth.png)
 
-[Navbar small screens](../fitness-recipes/readme_images/navbar_small_non_auth.png)
+![Navbar small screens](../fitness-recipes/readme_images/navbar_small_non_auth.png)
 
 For authenticated users:
-[Navbar Image](../fitness-recipes/readme_images/navbar_auth.png)
+![Navbar Image](../fitness-recipes/readme_images/navbar_auth.png)
 
-[Navbar small screens](../fitness-recipes/readme_images/navbar_small_auth.png)
+![Navbar small screens](../fitness-recipes/readme_images/navbar_small_auth.png)
 
 
 ### Footer
+Fully responsive footer, with working links, that opens in a new browser window:
+  - [Facebook](https://www.facebook.com/)
+  - [Instagram](https://www.instagram.com/)
+  - [YouTube](https://www.youtube.com/)
+
+[Footer Image](../fitness-recipes/readme_images/footer.png)
 
 ### Home Page
 
