@@ -2,7 +2,7 @@
 Fitness Recipes is a website for people looking for recipes that can help them increase physical and mental performance. With calorie calculated recipes, and the display of macro nutrients these recipes makes life easier when it comes to calculating the total intake for the day.
 Hopefully it also inspires to a healthier and stronger lifestyle!
 
-![Responsive image of homepage](../fitness-recipes/readme_images/responsive_devices.png)
+![Responsive image of homepage](./readme_images/responsive_devices.png)
 
 [Live Site](https://fitness-recipes-15e8ac3730aa.herokuapp.com/)
 
@@ -65,14 +65,14 @@ The Fitness Recipes name and the dumbbell icon are also linked to the home page.
 The dumbbell icon is rotated by -15 deg and turned into a green color when hovered over for a visual effect.
 
 For non-authenticated users:
-![Navbar Image](../fitness-recipes/readme_images/navbar_non_auth.png)
+![Navbar Image](./readme_images/navbar_non_auth.png)
 
-![Navbar small screens](../fitness-recipes/readme_images/navbar_small_non_auth.png)
+![Navbar small screens](./readme_images/navbar_small_non_auth.png)
 
 For authenticated users:
-![Navbar Image](../fitness-recipes/readme_images/navbar_auth.png)
+![Navbar Image](./readme_images/navbar_auth.png)
 
-![Navbar small screens](../fitness-recipes/readme_images/navbar_small_auth.png)
+![Navbar small screens](./readme_images/navbar_small_auth.png)
 
 
 ### Footer
@@ -112,7 +112,7 @@ The app uses the Cloudinary cloud service to store static files such as images. 
 
 
 ## Testing and validation
-See [TESTING.md](../fitness-recipes/TESTING.md) for all the detailed testing and validation.
+See [TESTING.md](./TESTING.md) for all the detailed testing and validation.
 
 ## Deployment
 ### Version Control
@@ -325,7 +325,7 @@ User stories were prioritised using the MoSCoW prioritisation technique. Each us
 
 GitHub milestones were also used to group related user stories together.
 
-![Image of the Kanban board](../fitness-recipes/readme_images/user_stories_kanban.png)
+![Image of the Kanban board](./readme_images/user_stories_kanban.png)
 
 [Link to the Project Kanban Board](https://github.com/users/SophieTiger/projects/4/views/1?visibleFields=%5B%22Title%22%2C%22Status%22%2C%22Labels%22%5D)
 
@@ -334,21 +334,21 @@ GitHub milestones were also used to group related user stories together.
 I created my wireframes using the Balsamiq app.
 
 #### Home page
-![Home wireframe](../fitness-recipes/readme_images/homepage.png)
+![Home wireframe](./readme_images/homepage.png)
 
 #### Recipes page
-![Recipes wireframe](../fitness-recipes/readme_images/recipe_list.png)
+![Recipes wireframe](./readme_images/recipe_list.png)
 
 #### Recipe detail page
-![Recipe detail wireframe](../fitness-recipes/readme_images/recipe_detail.png)
+![Recipe detail wireframe](./readme_images/recipe_detail.png)
 
 #### About page
-![About wireframe](../fitness-recipes/readme_images/about_page.png)
+![About wireframe](./readme_images/about_page.png)
 
 ### Database Schema
 The Entity Relationship Diagram below shows the structure of the database and the relationships between the tables.
 
-![Database Schema](../fitness-recipes/readme_images/database_schema.png)
+![Database Schema](./readme_images/database_schema.png)
 
 ## Security
 ### Cross-Site Request Forgery (CSRF) Protection
