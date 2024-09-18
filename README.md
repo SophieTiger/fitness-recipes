@@ -2,6 +2,8 @@
 Fitness Recipes is a website for people looking for recipes that can help them increase physical and mental performance. With calorie calculated recipes, and the display of macro nutrients these recipes makes life easier when it comes to calculating the total intake for the day.
 Hopefully it also inspires to a healthier and stronger lifestyle!
 
+![Responsive image of homepage](../fitness-recipes/readme_images/responsive_devices.png)
+
 [Live Site](https://fitness-recipes-15e8ac3730aa.herokuapp.com/)
 
 ## Content
@@ -50,6 +52,28 @@ Hopefully it also inspires to a healthier and stronger lifestyle!
 
 ## Features
 ### Navbar
+Fully responsive navbar, with links to:
+  - Home Page
+  - Recipes Page
+  - About Page
+  - Favorite Page (If the user is authenticated)
+  - Sign Up page (If the user is not authenticated)
+  - Sign Out (If the user is authenticated)
+  - Sign In (If the user is not authenticated)
+
+The Fitness Recipes name and the dumbbell icon are also linked to the home page.
+The dumbbell icon is rotated by -15 deg and turned into a green color when hovered over for a visual effect.
+
+For non-authenticated users:
+[Navbar Image](../fitness-recipes/readme_images/navbar_non_auth.png)
+
+[Navbar small screens](../fitness-recipes/readme_images/navbar_small_non_auth.png)
+
+For authenticated users:
+[Navbar Image](../fitness-recipes/readme_images/navbar_auth.png)
+
+[Navbar small screens](../fitness-recipes/readme_images/navbar_small_auth.png)
+
 
 ### Footer
 
