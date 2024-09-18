@@ -19,10 +19,10 @@ Hopefully it also inspires to a healthier and stronger lifestyle!
   - Sign In page
   - Register page
   - Sign out page
-- Testing
-- Validators
+- Testing and validation
 - Heroku Deployment
 - Technologies
+- Database Models
 - Planning project
   - Wireframes
   - Database Schema
@@ -35,8 +35,18 @@ Hopefully it also inspires to a healthier and stronger lifestyle!
 
 ## Project Goals
 ### User Goals
+- Easily find and open a recipe that I like.
+- As a logged in user - Interact with other users by liking and commenting on a recipe.
+- As a logged in user - Saving favorite recipes to "Favorites" for easy access.
+- Be able to navigate the platform and access relevant information easily.
+- Have the possibility to contact the site owner for request on further nutrition coaching or other questions.
+- Have a visually appealing and responsive user interface.
 
 ### Site Owner Goals
+- Have a fun and interactive website about recipes that contribute to strength and overall health.
+- Have users to frequently come back to the website to look for new recipes or use their favorites.
+- Use the site as a tool in Nutrition coaching.
+- Get new potential clients.
 
 ## Features
 ### Navbar
@@ -59,6 +69,9 @@ Hopefully it also inspires to a healthier and stronger lifestyle!
 
 ### Sign out page
 
+### Static File Storage
+The app uses the Cloudinary cloud service to store static files such as images. To store the recipe images uploaded by admin user when creating a recipe, the Cloudinary field uses the Cloudinary API to upload the images to the Cloudinary server and store the image URL in the database.
+
 ### Future features
 - Star ratings:
   - These will be implemented in the comment section below the recipe details where logged in users can rate a recipe if they wish to do so.
@@ -68,10 +81,8 @@ Hopefully it also inspires to a healthier and stronger lifestyle!
   - Filter that allows visitors and logged in users to filter recipes by servings, calories, macros and ratings.
 
 
-## Testing
-See TESTING.md for all the detailed testing
-
-## Validators
+## Testing and validation
+See [TESTING.md](../fitness-recipes/TESTING.md) for all the detailed testing and validation.
 
 ## Deployment
 ### Version Control
@@ -140,10 +151,134 @@ The API platform has been used to store images uploaded by admin of the webpage
 
 ### Deploy your cloned or forked site
 - Follow the steps above in: Prepare the workspace environment & settings.py
-- Then use the instructions under: Heroky Deployment
+- Then use the instructions under: Heroku Deployment
 
 
 ## Technologies
+### Languages
+- HTML5
+- CSS
+- JavaScript
+- Python
+
+### Frameworks, Libraries and Packages
+- asgiref==3.8.1
+- cloudinary==1.36.0
+- crispy-bootstrap5==0.7
+- dj-database-url==0.5.0
+- dj3-cloudinary-storage==0.0.6
+- Django==4.2.15
+- django-allauth==0.57.2
+- django-crispy-forms==2.3
+- django-summernote==0.8.20.0
+- django-taggit==6.0.0
+- gunicorn==20.1.0
+- oauthlib==3.2.2
+- psycopg2==2.9.9
+- PyJWT==2.9.0
+- python3-openid==3.2.0
+- requests-oauthlib==2.0.0
+- sqlparse==0.5.1
+- urllib3==1.26.20
+- whitenoise==5.3.0
+
+### Tools
+- [Git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- [Gitpod](https://www.gitpod.io/)
+- [Heroku](https://heroku.com/)
+- [CI Database Maker](https://dbs.ci-dbs.net/)
+- [Cloudinary](https://cloudinary.com/)
+- [Balsamiq](Balsamiq)
+- [Lucidchart](https://www.lucidchart.com/pages)
+- [Birme](https://www.birme.net/?image_format=webp&quality_webp=100)
+- [Tiny PNG](https://tinypng.com/)
+- [Am I Responsive](https://ui.dev/amiresponsive)
+- [Favicon](https://favicon.io/)
+- [Font Awesome](https://fontawesome.com/)
+- [The W3C Markup Validation Service](https://validator.w3.org/)
+- [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+- [Code Institute Python Linter](https://pep8ci.herokuapp.com/)
+- [JSHint](https://jshint.com/)
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+
+
+## Database Models
+The Fitness Recipes app uses a relational database to store and manage data. The relational database management system software used for this project is PostgreSQL which is hosted on the cloud service [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/).
+
+### Recipe Model
+Title - a CharField with a maximum of 100 characters that requires a unique value.
+
+Slug - an autopopulated field that uses django-autoslug, a django library that provides an improved slug field which can automatically populate itself from another field, preserve uniqueness of the value and use custom slugify() functions for better i18n.
+
+Description - a TextField with a maximum of 300 characters.
+
+Author - a ForeignKey linking the recipe to the user model of the user who created it.
+
+Featured_image - a CloudinaryField which contains the URL to the image that is stored on the Cloudinary server. If no image is added by the recipe creator, a default image is added.
+
+Servings - an IntegerField with a dropdown of choices of 1-10, stored in the SERVINGS list of tuples.
+
+Calories - a CharField with a maximum of 10 characters.
+
+Protein - a CharField with a maximum of 10 characters.
+
+Carbs - a CharField with a maximum of 10 characters.
+
+Fat - a CharField with a maximum of 10 characters.
+
+Ingredients - a TextField. Summernote is added to this field in the admin panel for styling purposes.
+
+Instructions - a TextField. Summernote is added to this field in the admin panel for styling purposes.
+
+Tags - the tags field uses a django application called django-taggit. It uses the class TaggableManager() to manage the relationships between the recipe and the associated tags.
+
+Created_at - a DateTimeField that autopopulates with the current date and time when a recipe is created.
+
+Updated_at - a DateTimeField that autopopulates and updates with the current date and time when a recipe is updated.
+
+Status - an IntegerField with choices of "Draft"(0) or "Published"(1), stored in the STATUS tuple of tuples. Default is 0.
+
+### Comment Model
+The comment model was taken from Code Institute's 'Codestar Blog'.
+
+Post - a ForeignKey linking the comment to the recipe it is associated with.
+
+Author - a ForeignKey linking the author of the comment to the user it is logged in as.
+
+Body - a TextField to store the comment submitted.
+
+Created_on - a DateTimeField that autopopulates with the current date and time when a comment is submitted.
+
+Approved - a BooleanField that defaults to false and is updated to true by admin when the comment is approved.
+
+### Like Model
+
+User - a ForeignKey linking the user performing the like-action to the user it is logged in as with help of the built in User model.
+
+Recipe - a ForeignKey linking the like to the recipe it is associated with.
+
+Created_on - a DateTimeField that autopopulates with the current date and time when a comment is submitted.
+
+
+### About Model
+
+Title - a CharField with a maximum of 200 characters that requires a unique value.
+
+Content - a TextField. Summernote is added to this field in the admin panel for styling purposes.
+
+Updated_on - a DateTimeField that autopopulates and updates with the current date and time when a recipe is updated.
+
+### ContactRequest Model
+
+Name - a CharField with a maximum of 200 characters.
+
+Email - an EmailField that reqires a valid email address format.
+
+Message - a TextField.
+
+Read - a BooleanField that defaults to false and is updated to true by admin when the contact message is ticked as read in the admin panel.
+
 
 ## Planning project
 ### User Stories
@@ -160,9 +295,9 @@ User stories were prioritised using the MoSCoW prioritisation technique. Each us
 
 GitHub milestones were also used to group related user stories together.
 
-Image of the Kanban board
+![Image of the Kanban board](../fitness-recipes/readme_images/user_stories_kanban.png)
 
-The Project Kanban Board - link
+[Link to the Project Kanban Board](https://github.com/users/SophieTiger/projects/4/views/1?visibleFields=%5B%22Title%22%2C%22Status%22%2C%22Labels%22%5D)
 
 
 ### Wireframes
@@ -181,7 +316,7 @@ I created my wireframes using the Balsamiq app.
 ![About wireframe](../fitness-recipes/readme_images/about_page.png)
 
 ### Database Schema
-I created the database schema using the Lucidchart website.
+The Entity Relationship Diagram below shows the structure of the database and the relationships between the tables.
 
 ![Database Schema](../fitness-recipes/readme_images/database_schema.png)
 
@@ -201,7 +336,8 @@ The restricted features for authenticated users only are:
 - Liking recipes
 - Saving recipes to Favorites
 
-### Admin site 
+### Admin Panel
+- Django's admin panel can be accessed by 'superusers' and users with the permission of 'staff status'. 
 - Only the admin can add, edit and delete recipes.
 - Admin must approve comments added by logged in users before they are displayed to other users of the site.
 
@@ -239,4 +375,4 @@ and a blank screen with only a raw json response is shown: {"liked": true, "like
   - https://www.myprotein.com/
   - https://www.bbcgoodfood.com/
   
-
+- I created the Entity Relationship Diagram (ERD) using the [Lucidchart](https://lucid.co/?_gl=1*17qu8xy*_gcl_au*NzE1MDIyOTA3LjE3MjQyMjYwNjc.*_ga*MTAzNzI0MjYwMS4xNzExNjI4NDcw*_ga_MPV5H3XMB5*MTcyNjY0NzI1NS43LjEuMTcyNjY0NzI2NS41MC4wLjA.) website.
