@@ -84,12 +84,45 @@ Fully responsive footer, with working links, that opens in a new browser window:
 ![Footer Image](./readme_images/footer.png)
 
 ### Home Page
+The 'Home' page features a decorative image of food in jars and a call to action which encourages unauthenticated users to Sign In to the website or encourages users to browse recipes on the site. There is also a text on the advantages of having a registered account on the site.
+[Home Page](./readme_images/home_non_auth.png)
+
+Authenticated users have the option to display their liked recipes in a Favorites page.
+![Home Page authenticated users](./readme_images/home_auth.png)
 
 ### Recipes page
+The 'Recipes' page features a paginated list of all currently published recipes displayed as cards. Clicking on the title of a recipe card will display the full recipe details. This page is displayed in a fully responsive column format. If there are no published recipes available for display, text reading 'No recipes found.' is displayed.
+At the top of the page there is a list of tags that can be clicked to filter recipes by tag.
+![Recipes page](./readme_images/recipes_page.png)
 
 ### Recipe detail page
+A recipe is displayed in full when the user clicks on a recipe card title. The recipe image, title, author, number of likes, number of servings, Calories per portion, Protein, Carbs, Fat and Meal Type are displayed in two columns on larger screens and one column on smaller screens.
+Meal Type tags, entered by the recipe author, are displayed abd are links to the browse page where other recipes that contain the same tag are displayed. This feature allows users to more easily find similar recipes.
+When the recipe is viewed by an authenticated user, functionality to like the recipe is available. When the user likes the recipe the database is updated, along with the total number of likes on the page and the like icon turns red to confirm the action. 
+![Recipe detail page](./readme_images/recipe_detail_page.png)
+
+When the recipe is liked it is also saved to Favorites and a confirmation message is displayed when a recipe is added or removed to Favorite recipes.
+
+![Add to Favorites](./readme_images/favorites_add.png)
+![Remove from Favorites](./readme_images/favorites_remove.png)
+
+When a user is not logged in, there is a message that they need to log in to like the recipe.
+![Like recipe when not logged in](./readme_images/likes_non_auth.png) 
+
+The ingredients and instructions sections are displayed in two columns on larger screens and one column on smaller screens.
+
+The commenting feature is also featured on the full recipe details page. Authenticated user are presented with a text input which can be used to submit a comment. Comments must be approved by admin before they will be displayed on the site. Upon submitting a comment a message is displayed inform the user that their comment has be successfully submitted and is awaiting approval. Approved comments for a recipe are displayed on the full recipe details page to all users of the site along with a total count of comments for the recipe.
+![Comments section](./readme_images/comments.png)
+
+If users are not logged in, there is a text telling them to log in to leave a comment.
+![Comments non-authenticated users](./readme_images/comments_non_auth.png)
+
 
 ### Favorites page
+The Favorites Page shows a paginated list of recipes that have been liked by the logged in user.
+[Favorites Page](./readme_images/favorites_page.png)
+
+If no recipes have yet been liked, there is a text saying: "You haven't liked any recipes yet."
 
 ### About page
 
@@ -98,6 +131,8 @@ Fully responsive footer, with working links, that opens in a new browser window:
 ### Register page
 
 ### Sign out page
+
+### CRUD functionality
 
 ### Static File Storage
 The app uses the Cloudinary cloud service to store static files such as images. To store the recipe images uploaded by admin user when creating a recipe, the Cloudinary field uses the Cloudinary API to upload the images to the Cloudinary server and store the image URL in the database.
