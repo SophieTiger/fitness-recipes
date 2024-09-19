@@ -85,7 +85,7 @@ Fully responsive footer, with working links, that opens in a new browser window:
 
 ### Home Page
 The 'Home' page features a decorative image of food in jars and a call to action which encourages unauthenticated users to Sign In to the website or encourages users to browse recipes on the site. There is also a text on the advantages of having a registered account on the site.
-[Home Page](./readme_images/home_non_auth.png)
+![Home Page](./readme_images/home_non_auth.png)
 
 Authenticated users have the option to display their liked recipes in a Favorites page.
 ![Home Page authenticated users](./readme_images/home_auth.png)
@@ -111,8 +111,32 @@ When a user is not logged in, there is a message that they need to log in to lik
 
 The ingredients and instructions sections are displayed in two columns on larger screens and one column on smaller screens.
 
-The commenting feature is also featured on the full recipe details page. Authenticated user are presented with a text input which can be used to submit a comment. Comments must be approved by admin before they will be displayed on the site. Upon submitting a comment a message is displayed inform the user that their comment has be successfully submitted and is awaiting approval. Approved comments for a recipe are displayed on the full recipe details page to all users of the site along with a total count of comments for the recipe.
+#### Commenting on recipes
+The commenting feature is also featured on the full recipe details page. Authenticated user are presented with a text input which can be used to submit a comment. Comments must be approved by admin before they will be displayed on the site. Upon submitting a comment a message is displayed inform the user that their comment has be successfully submitted and is awaiting approval. 
+![Comment confirmation](./readme_images/comment_confirmation.png)
+
+Approved comments for a recipe are displayed on the full recipe details page to all users of the site along with a total count of comments for the recipe.
+
 ![Comments section](./readme_images/comments.png)
+
+As a logged in user, you will have the option to edit your own recipe comments.
+Once edit has been clicked the comment appears in the body field of the comments form making it possible to edit it.
+Once edited and submitted, there is a confirmation message displayed on the update.
+
+![Comment update confirmation](./readme_images/comment_updated.png)
+
+As a logged in user, you will have the option to delete your own recipe comments.
+Once delete has been clicked a notification will be prompted to confirm this action.
+
+![Comment delete modal](./readme_images/delete_modal.png)
+
+If "Close" is clicked, the user is redirected back to the recipe detail page. If "Delete is clicked, the comment is deleted and a confirmation message is displayed.
+
+![Comment delete confirmation](./readme_images/comment_delete.png)
+
+CRUD functionality is only available on users own comments.
+
+![Comment crud only on own comments](./readme_images/comments_crud.png)
 
 If users are not logged in, there is a text telling them to log in to leave a comment.
 ![Comments non-authenticated users](./readme_images/comments_non_auth.png)
@@ -120,19 +144,57 @@ If users are not logged in, there is a text telling them to log in to leave a co
 
 ### Favorites page
 The Favorites Page shows a paginated list of recipes that have been liked by the logged in user.
-[Favorites Page](./readme_images/favorites_page.png)
+![Favorites Page](./readme_images/favorites_page.png)
 
 If no recipes have yet been liked, there is a text saying: "You haven't liked any recipes yet."
 
 ### About page
+The about page is available to all users to get a better idea of what the webpage is about as well as submit a contact form if they wish to get in contact by the site owner for help with Nutrion Coaching or any other questions or contact requests.
+The about profile image and about text are displayed in two columns on larger screens and one column on smaller screens.
+![About Page](./readme_images/about_and_contact_page.png)
+
+The contact form messages will be accessible to the admin in the admin panel.
+The user has fields of Name, Email, and message to fill out, all of which are required fields.
+After submitting the form the user will be prompted with a success message and redirected back to the About page.
+![Contact Form](./readme_images/contact_form.png)
+
 
 ### Sign In page
+As a registered site user, a sign in page is available where they can sign in using their username and password. For users who do not have a login already a link is visible for ease of navigation to the correct page to sign up for an account.
+![Sign in page](./readme_images/sign_in_page.png)
 
-### Register page
+Once logged in there is a confirmation message of successful signing in and redirecting to the home page.
+![Sign in confirmation message](./readme_images/sign_in_confirmation.png)
 
 ### Sign out page
+As a logged in user, a sign out page is available where they get the question if they really want to sign out of the application.
+![Sign out page](./readme_images/sign_out_page.png)
+
+Once logged out there is confirmation message of successful signing out and redirecting to the home page.
+![Sign out confirmation](./readme_images/sign_out_confirmation.png)
+
+### Sign Up page
+As a visitor of the page, a sign up page is available to register as a site user and enables likes and commenting on recipe posts. 
+For users who have a login already a link is visible for ease of navigation to the correct page.
+The visitor needs to add a username, email, a password and then a confirmation password.
+![Sign up page](./readme_images/sign_up_page.png)
+
+After submission of the form there is a confirmation message of successful signing in as the newly created user and directed to the homepage where all features become visible.
+![Sign up/in confirmation](./readme_images/sign_up_confirmation.png)
+
+
+### User Authentication
+The app uses the Django Allauth package to handle user authentication and enable authenticated users to utilise the CRUD functionalities. The package provides a set of views and templates to handle user registration, login and logout. Defensive programming has been used throughout the site to prevent users accessing pages when they don't have the relevant permissions. To access the admin panel the user requires 'superuser' or 'staff status' permission status. 
+Django's LoginRequired mixin is used to limit access to anonymous users.
+
+### Admin Panel
+Django's admin panel can be accessed by 'superusers' and users with the permission of 'staff status'. The admin panel is used to manage site content by creating and managing recipes and setting the approval status of comments. A list of all tags entered can also be viewed form the admin panel and can be deleted , edited and added to if needed. 
+Contact requests are shown and handled in the admin panel.
+Each data model is registered with the admin using the register decorator so they are easily accessed and managed.
 
 ### CRUD functionality
+Only authenticated users have full CRUD functionality on recipe comments and recipe likes.
+Only admin users have full CRUD on recipe posts.
 
 ### Static File Storage
 The app uses the Cloudinary cloud service to store static files such as images. To store the recipe images uploaded by admin user when creating a recipe, the Cloudinary field uses the Cloudinary API to upload the images to the Cloudinary server and store the image URL in the database.
@@ -217,7 +279,6 @@ The API platform has been used to store images uploaded by admin of the webpage
 ### Deploy your cloned or forked site
 - Follow the steps above in: Prepare the workspace environment & settings.py
 - Then use the instructions under: Heroku Deployment
-
 
 ## Technologies
 ### Languages
@@ -347,6 +408,9 @@ Read - a BooleanField that defaults to false and is updated to true by admin whe
 
 ## Planning project
 ### User Stories
+To start with I created a sheet with all the user stories that I wanted to cover, before moving them to issues in the Github Project Kanban board.
+This is a little bit of that sheet:
+![User stories sheet](./readme_images/user_stories_sheet.png)
 
 ### Agile Planning
 This project was developed using Agile methodology which allowed me to iteratively and incrementally build my app, with flexibility to make changes to my design throughout the entire development process.
@@ -366,7 +430,7 @@ GitHub milestones were also used to group related user stories together.
 
 
 ### Wireframes
-I created my wireframes using the Balsamiq app.
+I created my wireframes using the [Balsamiq app](https://balsamiq.cloud/).
 
 #### Home page
 ![Home wireframe](./readme_images/homepage.png)
@@ -381,7 +445,9 @@ I created my wireframes using the Balsamiq app.
 ![About wireframe](./readme_images/about_page.png)
 
 ### Database Schema
-The Entity Relationship Diagram below shows the structure of the database and the relationships between the tables.
+The Entity Relationship Diagram (ERD) below shows the structure of the database and the relationships between the tables.
+The ERD was created using [Lucidchart website](https://lucid.co/?_gl=1*17qu8xy*_gcl_au*NzE1MDIyOTA3LjE3MjQyMjYwNjc.*_ga*MTAzNzI0MjYwMS4xNzExNjI4NDcw*_ga_MPV5H3XMB5*MTcyNjY0NzI1NS43LjEuMTcyNjY0NzI2NS41MC4wLjA.)
+
 
 ![Database Schema](./readme_images/database_schema.png)
 
@@ -409,8 +475,10 @@ The restricted features for authenticated users only are:
 ## Custom Error pages
 - Error pages are customized for a better user experience
 
-  - 404 Page Not Found Error
   - 500 Internal Server Error
+  - 404 Page Not Found Error
+  
+  ![404 Error Page](./readme_images/404_error.png)
 
 Instructions on how to implement this was taken from here: https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages
 
@@ -427,17 +495,30 @@ and a blank screen with only a raw json response is shown: {"liked": true, "like
   - Searching and googling for answers gave me the idea to implement Optimistic updates that should provide a smooth user experience, and error handling that ensures that the UI stays in sync with the server state.
 - Message that is displayed when liking/unliking recipes is still shown on other pages after clicked down by the user on the recipe details page.
   - Solution: implement a solution that clears the message after it's displayed via AJAX. Modify Javascript and View, add a new view to clear messages and a new url to display the new view. This approach ensures that the messages are displayed immediately via AJAX and then cleared from Django's message storage, preventing them from appearing on subsequent page loads.
+- At the moment no bugs left that I am aware of.
 
 ## Credits
 
-- https://django-taggit.readthedocs.io/en/latest/getting_started.html, taggit
-- https://dev.to/radualexandrub/how-to-add-like-unlike-button-to-your-django-blog-5gkg, likes
-- I think therefore I blog Walkthrough project. A big help when starting to build this project, and a huge inspiration for the structure.
-- Tutor support has helped me a lot on the way and special thanks to Oisin, Recebecca and Holly.
-- My mentor Spencer Bariball is always the best support and makes sure that I follow through, truly appriciate his valuable feedback.
+### Code
 
-- Recipes:
-  - https://www.myprotein.com/
-  - https://www.bbcgoodfood.com/
-  
-- I created the Entity Relationship Diagram (ERD) using the [Lucidchart](https://lucid.co/?_gl=1*17qu8xy*_gcl_au*NzE1MDIyOTA3LjE3MjQyMjYwNjc.*_ga*MTAzNzI0MjYwMS4xNzExNjI4NDcw*_ga_MPV5H3XMB5*MTcyNjY0NzI1NS43LjEuMTcyNjY0NzI2NS41MC4wLjA.) website.
+- Forms were styled using [django-crispy-forms docs](https://django-crispy-forms.readthedocs.io/en/1.14.0/index.html).
+- The custom error pages were created using advice from my mentor and following [learndjango](https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages)
+- The taggit package was recommended by my mentor and I got the information on how to implement it from here: [taggit](https://django-taggit.readthedocs.io/en/latest/getting_started.html)
+- I found information on the likes-functionality here: [likes](https://dev.to/radualexandrub/how-to-add-like-unlike-button-to-your-django-blog-5gkg)
+- Code Institute's "I think therefore I blog" Walkthrough project. A big help when starting to build this project, and a huge inspiration for the structure.
+- [Perplexity AI](https://www.perplexity.ai/) has guided me through problems that were encountered on the way. Given advise and answering questions - a good partner.
+
+[Django Docs](https://docs.djangoproject.com/en/3.2/) and [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/) were frequently referred to in the development of this website
+
+### Content
+- Some Recipes featured were sourced from:
+  - [MyProtein](https://www.myprotein.com/)
+  - [BBCGoodFood](https://www.bbcgoodfood.com/)
+
+### Media
+- Some of the images featured on the app were sourced from [Pexels](https://www.pexels.com/)
+
+### Acknowledgements
+- Tutor support has helped me a lot on the way and special thanks to Oisin, Recebecca and Holly.
+- My Cohort class has been a very supportive group and given me a lot of helpful advise. Cohort facilitator Kristyna Wach is truly the best and provides all the tips and tricks she can to support in this process.
+- My mentor Spencer Bariball is always the best support and makes sure that I follow through. I truly appriciate his valuable feedback and help.
