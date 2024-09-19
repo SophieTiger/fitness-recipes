@@ -44,7 +44,7 @@
                             <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
                                 <h2 class="recipe-title">{{recipe.title}}</h2>
                             </a>
-                            <hr />
+                            <hr>
                             <p>{{recipe.description}}</p>
                             <p>Meal type:
                                 {% for tag in recipe.tags.all %}

@@ -27,11 +27,15 @@ A total of 78 manual tests were structured in a document with the following topi
 
 The document was structured as a Test schema into columns with Tests and Status.
 Status have 4 options; Not started, Fail, Pass or Test Subject.
+
 ![Test Status image](./readme_images/test_status.png)
 
-This document was used throughout the development process.
+The document was used throughout the development process.
+This is a snippet of that document:
 
-[Link to the full Google test document](https://docs.google.com/spreadsheets/d/1L--W--hgOou8HRXE2FjazDIsixKQZULy3gec19Mxbpo/edit?usp=sharing)
+![Test document image](./readme_images/test_schema.png)
+
+[Link to the full Google test document can be found here](https://docs.google.com/spreadsheets/d/1L--W--hgOou8HRXE2FjazDIsixKQZULy3gec19Mxbpo/edit?usp=sharing)
 
 ### Chrome Developer Tools
 Chrome developer tools were used throughout the development of the webpage to test responsiveness. Responsiveness was tested using developer Tools to emulate the following devices:
