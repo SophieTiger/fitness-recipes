@@ -4,36 +4,20 @@ Hopefully it also inspires to a healthier and stronger lifestyle!
 
 ![Responsive image of homepage](./readme_images/responsive_devices.png)
 
-[Live Site](https://fitness-recipes-15e8ac3730aa.herokuapp.com/)
+### [Live Site](https://fitness-recipes-15e8ac3730aa.herokuapp.com/)
+
 
 ## Content
-- Project Goals
-  - User Goals
-  - Site Owner Goals
- - Features
-  - Navbar
-  - Footer
-  - Home page
-  - Recipes page
-  - Recipe detail page
-  - Favorites page
-  - About page
-  - Sign In page
-  - Register page
-  - Sign out page
-- Testing and validation
-- Heroku Deployment
-- Technologies
-- Database Models
-- Planning project
-  - Wireframes
-  - Database Schema
-  - User Stories
-  - Agile Planning
-- Security
-- Bugs
-- Credits
-
+- [Project Goals](#project-goals)
+- [Features](#features)
+- [Testing and validation](#testing-and-validation)
+- [Deployment](#deployment)
+- [Technologies](#technologies)
+- [Database Models](#database-models)
+- [Planning project](#planning-project)
+- [Security](#security)
+- [Custom Error pages](#custom-error-pages)
+- [Credits](#credits)
 
 ## Project Goals
 ### User Goals
@@ -98,6 +82,8 @@ At the top of the page there is a list of tags that can be clicked to filter rec
 ### Recipe detail page
 A recipe is displayed in full when the user clicks on a recipe card title. The recipe image, title, author, number of likes, number of servings, Calories per portion, Protein, Carbs, Fat and Meal Type are displayed in two columns on larger screens and one column on smaller screens.
 Meal Type tags, entered by the recipe author, are displayed abd are links to the browse page where other recipes that contain the same tag are displayed. This feature allows users to more easily find similar recipes.
+
+#### Liking a recipe
 When the recipe is viewed by an authenticated user, functionality to like the recipe is available. When the user likes the recipe the database is updated, along with the total number of likes on the page and the like icon turns red to confirm the action. 
 ![Recipe detail page](./readme_images/recipe_detail_page.png)
 
@@ -112,8 +98,12 @@ When a user is not logged in, there is a message that they need to log in to lik
 The ingredients and instructions sections are displayed in two columns on larger screens and one column on smaller screens.
 
 #### Commenting on recipes
-The commenting feature is also featured on the full recipe details page. Authenticated user are presented with a text input which can be used to submit a comment. Comments must be approved by admin before they will be displayed on the site. Upon submitting a comment a message is displayed inform the user that their comment has be successfully submitted and is awaiting approval. 
+The commenting feature is also featured on the full recipe details page. Authenticated user are presented with a text input which can be used to submit a comment. Comments must be approved by admin before they will be displayed on the site. Upon submitting a comment a message is displayed inform the user that their comment has be successfully submitted and is pending approval. 
 ![Comment confirmation](./readme_images/comment_confirmation.png)
+
+Comments are greyed out, and only shown to the user that created it, until approved by the admin.
+
+![Unapproved comment](./readme_images/comment_unapproved.png)
 
 Approved comments for a recipe are displayed on the full recipe details page to all users of the site along with a total count of comments for the recipe.
 
@@ -209,7 +199,8 @@ The app uses the Cloudinary cloud service to store static files such as images. 
 
 
 ## Testing and validation
-See [TESTING.md](./TESTING.md) for all the detailed testing and validation.
+Manual testing has been performed on the site.
+See the [Test file](TESTING.md) for all the detailed testing and validation.
 
 ## Deployment
 ### Version Control
@@ -481,21 +472,6 @@ The restricted features for authenticated users only are:
   ![404 Error Page](./readme_images/404_error.png)
 
 Instructions on how to implement this was taken from here: https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages
-
-## Bugs
-- The message to add/remove recipes from Favorites is displaying, but only on the recipe_list page, and the heart is not filled in and added to the count on the recipe_detail display until I go out and back to the recipe_detail display.
-  - Solution: moved likes.js script to recipe_detail template, and added defer to script tags in the base template to help with load performance.
-- Clicking like redirects to this url: https://8000-sophietiger-fitnessreci-yqclcmt1m47.ws.codeinstitute-ide.net/recipe/toffee-apple-overnight-oats/like/
-and a blank screen with only a raw json response is shown: {"liked": true, "likes_count": 2, "message": "Toffee Apple Overnight Oats added to Favorites!"}
-  - Added some JavaScript to prevent the default form submission and handle the AJAX response correctly. 
-- Delete and Edit functionality on comments suddenly stopped working when site was almost finished.
-  - Analyzed error messages in the devtools console, pointing me towards a ReferenceError that Bootstrap is not defined at comments.js.
-  After googling and serching for answers I wrapped my comments.js code in a DOMContentLoaded event listener to make sure that code runs only after the HTML document has been completely loaded and parsed, and all scripts (including Bootstrap) are ready to use.
-- Number of likes not changing on the recipe detail page when clicking the heart-like button.
-  - Searching and googling for answers gave me the idea to implement Optimistic updates that should provide a smooth user experience, and error handling that ensures that the UI stays in sync with the server state.
-- Message that is displayed when liking/unliking recipes is still shown on other pages after clicked down by the user on the recipe details page.
-  - Solution: implement a solution that clears the message after it's displayed via AJAX. Modify Javascript and View, add a new view to clear messages and a new url to display the new view. This approach ensures that the messages are displayed immediately via AJAX and then cleared from Django's message storage, preventing them from appearing on subsequent page loads.
-- At the moment no bugs left that I am aware of.
 
 ## Credits
 
