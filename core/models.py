@@ -2,9 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+
 class About(models.Model):
     """
-    Stores a description of the site owner and the services provided.
+    Stores a description of the site purpose and the services provided.
     """
     title = models.CharField(max_length=200, unique=True)
     content = models.TextField()

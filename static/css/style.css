@@ -163,18 +163,6 @@ main {
     text-align: right;
 }
 
-.light-bg {
-    background-color: #fff;
-}
-
-.dark-bg {
-    background-color: #445261;
-}
-
-.main-bg {
-    background-color: #F9FAFC;
-}
-
 .tags-container {
     margin-top: 20px;
     margin-bottom: 20px;    
@@ -268,7 +256,6 @@ main {
 .favorite-header {
     margin-top: 20px;
 }
-
 
 .btn-signup,
 .btn-edit {

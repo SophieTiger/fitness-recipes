@@ -7,6 +7,10 @@ from taggit.managers import TaggableManager
 
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
+    """
+    Lists fields for display in admin, fields for search,
+    field filters, fields to prepopulate and rich-text editor.
+    """
     list_display = ('title', 'status', 'created_at', 'get_tags')
     search_fields = ['title', 'ingredients', 'tags__name']
     list_filter = ('status', 'created_at')
@@ -19,8 +23,8 @@ class RecipeAdmin(SummernoteModelAdmin):
 
     def get_tags(self, obj):
         return ", ".join(o.name for o in obj.tags.all())
-    
+
     get_tags.short_description = 'Tags'
 
-# Register your models here.
+
 admin.site.register(Comment)

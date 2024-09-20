@@ -7,6 +7,7 @@ from cloudinary.models import CloudinaryField
 SERVINGS = [tuple([x, x]) for x in range(1, 11)]
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
 class Recipe(models.Model):
     """
     Stores a Recipe post entered by admin related to :model:`auth.User`.
@@ -15,7 +16,8 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     description = models.TextField(max_length=300)
     author = models.ForeignKey(User, on_delete=models.PROTECT,
-        limit_choices_to={'is_staff': True}, related_name="recipe_posts")
+                               limit_choices_to={'is_staff': True},
+                               related_name="recipe_posts")
     featured_image = CloudinaryField('image', default='placeholder')
     servings = models.IntegerField(choices=SERVINGS)
     calories = models.CharField(max_length=10)
@@ -32,7 +34,7 @@ class Recipe(models.Model):
     @property
     def number_of_likes(self):
         return self.like_set.count()
-    
+
     class Meta:
         ordering = ["-created_at"]
 
@@ -42,11 +44,13 @@ class Recipe(models.Model):
 
 class Comment(models.Model):
     """
-    Stores a single comment made to a Recipe post related to :model: `recipes.recipe`
-    and :model:`auth.User`
+    Stores a single comment made to a Recipe post related to
+    :model: `recipes.recipe` and :model:`auth.User`
     """
-    post = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comments")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    post = models.ForeignKey(
+        Recipe, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="commenter")
     body = models.TextField()
     created_on = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
@@ -59,15 +63,16 @@ class Comment(models.Model):
 
 
 class Like(models.Model):
+    """
+    Stores a single like made to a Recipe post related to
+    :model: `recipes.recipe` and :model:`auth.User`
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         unique_together = ('user', 'recipe')
-    
+
     def __str__(self):
         return f"{self.user.username} likes {self.recipe.title}"
-
-
-
