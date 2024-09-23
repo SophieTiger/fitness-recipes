@@ -487,12 +487,13 @@ Instructions on how to implement this was taken from here: https://learndjango.c
 [Django Docs](https://docs.djangoproject.com/en/3.2/) and [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/) were frequently referred to in the development of this website
 
 ### Content
-- Some Recipes featured were sourced from:
+- Most Recipes featured were sourced from:
   - [MyProtein](https://www.myprotein.com/)
   - [BBCGoodFood](https://www.bbcgoodfood.com/)
+- Some recipes are from my own collection.
 
 ### Media
-- Some of the images featured on the app were sourced from [Pexels](https://www.pexels.com/)
+- The image featured on the home page was sourced from [Pexels](https://www.pexels.com/), credits to [Ella Olsson](https://www.pexels.com/sv-se/@ella-olsson-572949/) 
 
 ### Acknowledgements
 - Tutor support has helped me a lot on the way and special thanks to Oisin, Recebecca and Holly.

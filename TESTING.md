@@ -102,8 +102,20 @@ During the development of the webpage the testing was done using Google Chrome. 
 ### [W3C HTML Validator](https://validator.w3.org/)
 Used to validate the HTML files.
 
+Home page and recipes page:
+
+![html validation](./readme_images/html_validation.png)
+
+About page showed an error:
+
+![html about page error](./readme_images/html_validation_error.png)
+
 ### [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 Used to validate the CSS in the stylesheet style.css.
+
+![CSS Validation no errors](./readme_images/css_validation.png)
+
+- No errors were found but warnings due to webkits are noted
 
 ### [JSHint JavaScript Validator](https://jshint.com/)
 No errors displayed in the Javascript files.
