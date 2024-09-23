@@ -96,6 +96,7 @@ During the development of the webpage the testing was done using Google Chrome. 
 -   Google Chrome
 -   Mozilla Firefox
 -   Safari
+-   Microsoft Edge
 
 ## Validation
 
@@ -138,11 +139,45 @@ Lighthouse audit reports were generated through Chrome DevTools to test the perf
 
 Lighthouse audit reports are as follows:
 
+### Home page
+
+![Lighthouse test home page](./readme_images/lighthouse_home.png)
+
+### Recipes page
+
+![Lighthouse test recipes page](./readme_images/lighthouse_recipes.png)
+
+### Recipe detail page
+
+![Lighthouse test recipe detail page](./readme_images/lighthouse_recipe_detail.png)
+
+### Favorites page
+
+![Lighthouse test favorites page](./readme_images/lighthouse_favorites.png)
+
+### About page
+
+![Lighthouse test about page](./readme_images/lighthouse_about.png)
+
+### Sign In page
+
+![Lighthouse test sign in page](./readme_images/lighthouse_login.png)
+
+### Sign Up page
+
+![Lighthouse test sign up page](./readme_images/lighthouse_signup.png)
+
+### Sign Out page
+
+![Lighthouse test sign out page](./readme_images/lighthouse_signout.png)
+
 
 ## Bugs
 - Clicking like redirects to this url: https://8000-sophietiger-fitnessreci-yqclcmt1m47.ws.codeinstitute-ide.net/recipe/toffee-apple-overnight-oats/like/
 and a blank screen with only a raw json response is shown: {"liked": true, "likes_count": 2, "message": "Toffee Apple Overnight Oats added to Favorites!"}
   - Added some JavaScript to prevent the default form submission and handle the AJAX response correctly. 
+  This tutorial helped me: https://www.youtube.com/watch?v=Lsxc5ok4qdU
+  And perplexity.ai answered a lot of my questions when adding the code.
 - Delete and Edit functionality on comments suddenly stopped working when site was almost finished.
   - Analyzed error messages in the devtools console, pointing me towards a ReferenceError that Bootstrap is not defined at comments.js.
   After googling and serching for answers I wrapped my comments.js code in a DOMContentLoaded event listener to make sure that code runs only after the HTML document has been completely loaded and parsed, and all scripts (including Bootstrap) are ready to use.
