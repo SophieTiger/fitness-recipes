@@ -110,6 +110,7 @@ Home page and recipes page:
 About page showed an error:
 
 ![html about page error](./readme_images/html_validation_error.png)
+This is due to summernote being used. It was tought in the walkthrough and therefore I decided to use it.
 
 ### [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 Used to validate the CSS in the stylesheet style.css.
@@ -146,14 +147,18 @@ Lighthouse audit reports are as follows:
 ### Recipes page
 
 ![Lighthouse test recipes page](./readme_images/lighthouse_recipes.png)
+The lower score on Best Practices is uue to collecting images from Cloudinary and me not paying for a secure account on this project.
+
 
 ### Recipe detail page
 
 ![Lighthouse test recipe detail page](./readme_images/lighthouse_recipe_detail.png)
+The lower score on Best Practices is uue to collecting images from Cloudinary and me not paying for a secure account on this project.
 
 ### Favorites page
 
 ![Lighthouse test favorites page](./readme_images/lighthouse_favorites.png)
+The lower score on Best Practices is uue to collecting images from Cloudinary and me not paying for a secure account on this project.
 
 ### About page
 

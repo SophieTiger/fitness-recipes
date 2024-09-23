@@ -162,7 +162,7 @@ main {
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
     text-align: right;
 }
-
+/* Styles for the recipe tags */
 .tags-container {
     margin-top: 20px;
     margin-bottom: 20px;    
@@ -203,6 +203,7 @@ main {
     color: #45a049;
 }
 
+/* Style for the recipe cards */
 .card {
     border: none;
     background-color: transparent;
@@ -257,6 +258,7 @@ main {
     margin-top: 20px;
 }
 
+/* Buttons and links */ 
 .btn-signup,
 .btn-edit {
     background-color: #188181;
@@ -342,7 +344,6 @@ main {
     margin-left: 5px;
     font-size: 1rem;
 }
-
 
 /* //////About page////// */
 #profile-img {

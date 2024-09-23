@@ -10,11 +10,11 @@ Hopefully it also inspires to a healthier and stronger lifestyle!
 ## Content
 - [Project Goals](#project-goals)
 - [Features](#features)
+- [Planning project](#planning-project)
+- [Database Models](#database-models)
 - [Testing and validation](#testing-and-validation)
 - [Deployment](#deployment)
 - [Technologies](#technologies)
-- [Database Models](#database-models)
-- [Planning project](#planning-project)
 - [Security](#security)
 - [Custom Error pages](#custom-error-pages)
 - [Credits](#credits)
@@ -197,6 +197,127 @@ The app uses the Cloudinary cloud service to store static files such as images. 
   - Search function that allows visitors and logged in users to search the webpage by keywords relating to ingredients, recipe title and ratings.
   - Filter that allows visitors and logged in users to filter recipes by servings, calories, macros and ratings.
 
+## Planning project
+### User Stories
+To start with I created a sheet with all the user stories that I wanted to cover, before moving them to issues in the Github Project Kanban board.
+This is a little bit of that sheet:
+![User stories sheet](./readme_images/user_stories_sheet.png)
+
+### Agile Planning
+This project was developed using Agile methodology which allowed me to iteratively and incrementally build my app, with flexibility to make changes to my design throughout the entire development process.
+
+GitHub Issues and Projects were used to manage the development process. The board view of the Project feature was used to display and manage my progress in the form of a 'kanban board'. The user stories were added to the 'Todo' column to be prioritised for development, moved to the 'In Progress' column to indicate development of the feature had begun and finally moved to the 'Done' column when the feature had been implemented and the acceptance criteria had been met.
+User stories were prioritised using the MoSCoW prioritisation technique. Each user story was given one of the following labels:
+- Must have - to indicate the user story is guaranteed to be delivered.
+- Should have - to indicate the user story would add significant value but is not vital.
+- Could have - to indicate the user story would have a small impact if left out.
+- Won't have - to indicate the user story is not a priority in the current iteration.
+
+GitHub milestones were also used to group related user stories together.
+
+![Image of the Kanban board](./readme_images/user_stories_kanban.png)
+
+[Link to the Project Kanban Board](https://github.com/users/SophieTiger/projects/4/views/1?visibleFields=%5B%22Title%22%2C%22Status%22%2C%22Labels%22%5D)
+
+
+### Wireframes
+I created my wireframes using the [Balsamiq app](https://balsamiq.cloud/).
+
+#### Home page
+![Home wireframe](./readme_images/homepage.png)
+
+#### Recipes page
+![Recipes wireframe](./readme_images/recipe_list.png)
+
+#### Recipe detail page
+![Recipe detail wireframe](./readme_images/recipe_detail.png)
+
+#### About page
+![About wireframe](./readme_images/about_page.png)
+
+### Database Schema
+The Entity Relationship Diagram (ERD) below shows the structure of the database and the relationships between the tables.
+The ERD was created using [Lucidchart website](https://lucid.co/?_gl=1*17qu8xy*_gcl_au*NzE1MDIyOTA3LjE3MjQyMjYwNjc.*_ga*MTAzNzI0MjYwMS4xNzExNjI4NDcw*_ga_MPV5H3XMB5*MTcyNjY0NzI1NS43LjEuMTcyNjY0NzI2NS41MC4wLjA.)
+
+
+![Database Schema](./readme_images/database_schema.png)
+
+## Database Models
+The Fitness Recipes app uses a relational database to store and manage data. The relational database management system software used for this project is PostgreSQL which is hosted on the cloud service [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/).
+
+### Recipe Model
+Title - a CharField with a maximum of 100 characters that requires a unique value.
+
+Slug - an autopopulated field that uses django-autoslug, a django library that provides an improved slug field which can automatically populate itself from another field, preserve uniqueness of the value and use custom slugify() functions for better i18n.
+
+Description - a TextField with a maximum of 300 characters.
+
+Author - a ForeignKey linking the recipe to the user model of the user who created it.
+
+Featured_image - a CloudinaryField which contains the URL to the image that is stored on the Cloudinary server. If no image is added by the recipe creator, a default image is added.
+
+Servings - an IntegerField with a dropdown of choices of 1-10, stored in the SERVINGS list of tuples.
+
+Calories - a CharField with a maximum of 10 characters.
+
+Protein - a CharField with a maximum of 10 characters.
+
+Carbs - a CharField with a maximum of 10 characters.
+
+Fat - a CharField with a maximum of 10 characters.
+
+Ingredients - a TextField. Summernote is added to this field in the admin panel for styling purposes.
+
+Instructions - a TextField. Summernote is added to this field in the admin panel for styling purposes.
+
+Tags - the tags field uses a django application called django-taggit. It uses the class TaggableManager() to manage the relationships between the recipe and the associated tags.
+
+Created_at - a DateTimeField that autopopulates with the current date and time when a recipe is created.
+
+Updated_at - a DateTimeField that autopopulates and updates with the current date and time when a recipe is updated.
+
+Status - an IntegerField with choices of "Draft"(0) or "Published"(1), stored in the STATUS tuple of tuples. Default is 0.
+
+### Comment Model
+The comment model was taken from Code Institute's 'Codestar Blog'.
+
+Post - a ForeignKey linking the comment to the recipe it is associated with.
+
+Author - a ForeignKey linking the author of the comment to the user it is logged in as.
+
+Body - a TextField to store the comment submitted.
+
+Created_on - a DateTimeField that autopopulates with the current date and time when a comment is submitted.
+
+Approved - a BooleanField that defaults to false and is updated to true by admin when the comment is approved.
+
+### Like Model
+
+User - a ForeignKey linking the user performing the like-action to the user it is logged in as with help of the built in User model.
+
+Recipe - a ForeignKey linking the like to the recipe it is associated with.
+
+Created_on - a DateTimeField that autopopulates with the current date and time when a comment is submitted.
+
+
+### About Model
+
+Title - a CharField with a maximum of 200 characters that requires a unique value.
+
+Content - a TextField. Summernote is added to this field in the admin panel for styling purposes.
+
+Updated_on - a DateTimeField that autopopulates and updates with the current date and time when a recipe is updated.
+
+### ContactRequest Model
+
+Name - a CharField with a maximum of 200 characters.
+
+Email - an EmailField that reqires a valid email address format.
+
+Message - a TextField.
+
+Read - a BooleanField that defaults to false and is updated to true by admin when the contact message is ticked as read in the admin panel.
+
 
 ## Testing and validation
 Manual testing has been performed on the site.
@@ -319,128 +440,6 @@ The API platform has been used to store images uploaded by admin of the webpage
 - [JSHint](https://jshint.com/)
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
 
-
-## Database Models
-The Fitness Recipes app uses a relational database to store and manage data. The relational database management system software used for this project is PostgreSQL which is hosted on the cloud service [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/).
-
-### Recipe Model
-Title - a CharField with a maximum of 100 characters that requires a unique value.
-
-Slug - an autopopulated field that uses django-autoslug, a django library that provides an improved slug field which can automatically populate itself from another field, preserve uniqueness of the value and use custom slugify() functions for better i18n.
-
-Description - a TextField with a maximum of 300 characters.
-
-Author - a ForeignKey linking the recipe to the user model of the user who created it.
-
-Featured_image - a CloudinaryField which contains the URL to the image that is stored on the Cloudinary server. If no image is added by the recipe creator, a default image is added.
-
-Servings - an IntegerField with a dropdown of choices of 1-10, stored in the SERVINGS list of tuples.
-
-Calories - a CharField with a maximum of 10 characters.
-
-Protein - a CharField with a maximum of 10 characters.
-
-Carbs - a CharField with a maximum of 10 characters.
-
-Fat - a CharField with a maximum of 10 characters.
-
-Ingredients - a TextField. Summernote is added to this field in the admin panel for styling purposes.
-
-Instructions - a TextField. Summernote is added to this field in the admin panel for styling purposes.
-
-Tags - the tags field uses a django application called django-taggit. It uses the class TaggableManager() to manage the relationships between the recipe and the associated tags.
-
-Created_at - a DateTimeField that autopopulates with the current date and time when a recipe is created.
-
-Updated_at - a DateTimeField that autopopulates and updates with the current date and time when a recipe is updated.
-
-Status - an IntegerField with choices of "Draft"(0) or "Published"(1), stored in the STATUS tuple of tuples. Default is 0.
-
-### Comment Model
-The comment model was taken from Code Institute's 'Codestar Blog'.
-
-Post - a ForeignKey linking the comment to the recipe it is associated with.
-
-Author - a ForeignKey linking the author of the comment to the user it is logged in as.
-
-Body - a TextField to store the comment submitted.
-
-Created_on - a DateTimeField that autopopulates with the current date and time when a comment is submitted.
-
-Approved - a BooleanField that defaults to false and is updated to true by admin when the comment is approved.
-
-### Like Model
-
-User - a ForeignKey linking the user performing the like-action to the user it is logged in as with help of the built in User model.
-
-Recipe - a ForeignKey linking the like to the recipe it is associated with.
-
-Created_on - a DateTimeField that autopopulates with the current date and time when a comment is submitted.
-
-
-### About Model
-
-Title - a CharField with a maximum of 200 characters that requires a unique value.
-
-Content - a TextField. Summernote is added to this field in the admin panel for styling purposes.
-
-Updated_on - a DateTimeField that autopopulates and updates with the current date and time when a recipe is updated.
-
-### ContactRequest Model
-
-Name - a CharField with a maximum of 200 characters.
-
-Email - an EmailField that reqires a valid email address format.
-
-Message - a TextField.
-
-Read - a BooleanField that defaults to false and is updated to true by admin when the contact message is ticked as read in the admin panel.
-
-
-## Planning project
-### User Stories
-To start with I created a sheet with all the user stories that I wanted to cover, before moving them to issues in the Github Project Kanban board.
-This is a little bit of that sheet:
-![User stories sheet](./readme_images/user_stories_sheet.png)
-
-### Agile Planning
-This project was developed using Agile methodology which allowed me to iteratively and incrementally build my app, with flexibility to make changes to my design throughout the entire development process.
-
-GitHub Issues and Projects were used to manage the development process. The board view of the Project feature was used to display and manage my progress in the form of a 'kanban board'. The user stories were added to the 'Todo' column to be prioritised for development, moved to the 'In Progress' column to indicate development of the feature had begun and finally moved to the 'Done' column when the feature had been implemented and the acceptance criteria had been met.
-User stories were prioritised using the MoSCoW prioritisation technique. Each user story was given one of the following labels:
-- Must have - to indicate the user story is guaranteed to be delivered.
-- Should have - to indicate the user story would add significant value but is not vital.
-- Could have - to indicate the user story would have a small impact if left out.
-- Won't have - to indicate the user story is not a priority in the current iteration.
-
-GitHub milestones were also used to group related user stories together.
-
-![Image of the Kanban board](./readme_images/user_stories_kanban.png)
-
-[Link to the Project Kanban Board](https://github.com/users/SophieTiger/projects/4/views/1?visibleFields=%5B%22Title%22%2C%22Status%22%2C%22Labels%22%5D)
-
-
-### Wireframes
-I created my wireframes using the [Balsamiq app](https://balsamiq.cloud/).
-
-#### Home page
-![Home wireframe](./readme_images/homepage.png)
-
-#### Recipes page
-![Recipes wireframe](./readme_images/recipe_list.png)
-
-#### Recipe detail page
-![Recipe detail wireframe](./readme_images/recipe_detail.png)
-
-#### About page
-![About wireframe](./readme_images/about_page.png)
-
-### Database Schema
-The Entity Relationship Diagram (ERD) below shows the structure of the database and the relationships between the tables.
-The ERD was created using [Lucidchart website](https://lucid.co/?_gl=1*17qu8xy*_gcl_au*NzE1MDIyOTA3LjE3MjQyMjYwNjc.*_ga*MTAzNzI0MjYwMS4xNzExNjI4NDcw*_ga_MPV5H3XMB5*MTcyNjY0NzI1NS43LjEuMTcyNjY0NzI2NS41MC4wLjA.)
-
-
-![Database Schema](./readme_images/database_schema.png)
 
 ## Security
 ### Cross-Site Request Forgery (CSRF) Protection
